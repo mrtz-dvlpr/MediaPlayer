@@ -19,11 +19,13 @@ Rectangle {
 
     property real videoSliderValue
 
-    property int videoSliderFrom
-
     property bool videoSliderEnable
 
-    property real audioSliderValue: audioSlider.value/audioSlider.to
+    property real audioSliderValue: audioSlider.value / audioSlider.to
+
+    property real getAudioSliderValue: audioSlider.value
+
+    property real getVideoSliderValue: videoSlider.value
 
     signal playAndPauseButtonClicked
 
@@ -34,14 +36,6 @@ Rectangle {
     signal ejectButtonClicked
 
     signal audioSliderMoved
-
-    function getAudioSliderValue() {
-        return audioSlider.value
-    }
-
-    function getSliderValue() {
-        return videoSlider.value
-    }
 
     Column {
 
@@ -54,11 +48,13 @@ Rectangle {
 
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width
-            from: videoSliderFrom
 
+            from: 0.0
             value: videoSliderValue
             to: videoSliderTo
+
             onMoved: videoSliderMoved()
+
             enabled: videoSliderEnable
         }
         Item {

@@ -1,1 +1,1 @@
-fix video slider and clean slider code
+fix slider and cleaned the code set filter for drop and filedialog 

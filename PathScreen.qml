@@ -73,11 +73,17 @@ Rectangle {
                 var url = drop.urls[i]
                 str += Qt.resolvedUrl(url)
             }
-            console.log(str)
 
-            dropAreaDropUlr = str
+            var fileExtension = str.split('.').pop().toLowerCase()
 
-            dropAreaDropped()
+            var supportedExtensions = ['mp4', 'avi', 'mov', 'mkv', 'mpeg', 'mpg', '3gp', '3g2', 'dv']
+            if (supportedExtensions.indexOf(fileExtension) !== -1) {
+
+                dropAreaDropUlr = str
+                dropAreaDropped()
+            } else {
+                console.log("Unsupported file type.")
+            }
         }
 
         onExited: {

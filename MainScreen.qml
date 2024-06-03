@@ -38,26 +38,32 @@ Item {
 
     function pushPage(screen, path) {
         media.mediaPlayerSourcePath = path
-        mediaControl.videoSliderEnable = true
+        console.log(playbackControl.audioSliderValue)
+        media.audioVolume = playbackControl.audioSliderValue
+        playbackControl.videoSliderEnable = true
         view.push(screen)
     }
+
     function popPage() {
-        mediaControl.videoSliderEnable = false
+        playbackControl.videoSliderEnable = false
         media.stop()
         media.mediaPlayerSourcePath = ""
         view.pop()
     }
+
     Media {
 
-        color: "black"
+        color: mainColor
+
         id: media
 
         MouseArea {
             width: parent.width / 3
             height: parent.height
             anchors.centerIn: parent
+
             onDoubleClicked: {
-                if (!media.getPlaying())
+                if (!media.getPlaying)
                     media.play()
                 else
                     media.pause()
@@ -70,7 +76,7 @@ Item {
             anchors.left: parent.left
             anchors.top: parent.top
             onDoubleClicked: {
-                media.setPosition(media.getPosition() - 5000)
+                media.setPosition = (media.getPosition - 5000)
             }
         }
 
@@ -80,32 +86,30 @@ Item {
             anchors.right: parent.right
             anchors.top: parent.top
             onDoubleClicked: {
-                media.setPosition(media.getPosition() + 5000)
+                media.setPosition = (media.getPosition + 5000)
             }
         }
 
         onPlayOrPause: {
-            if (media.getHasVideo()) {
-                if (media.getPlaying()) {
-                    mediaControl.playtAndPauseButtonIconPath
+            if (media.getHasVideo) {
+                if (media.getPlaying) {
+                    playbackControl.playtAndPauseButtonIconPath
                             = "qrc:/icons/Pulsar/icons8-pause-button-96.png"
                 } else {
-                    mediaControl.playtAndPauseButtonIconPath
+                    playbackControl.playtAndPauseButtonIconPath
                             = "qrc:/icons/Pulsar/icons8-circled-play-96.png"
                 }
             }
         }
-
-        // audioVolume:
     }
 
     FileDialog {
         id: fileDialog
-        title: "Please choose a file"
+        title: "Select a Video File"
         onAccepted: {
             pushPage(media, selectedFile)
         }
-        nameFilters: []
+        nameFilters: ["Video Files (*.mov *.mp4 *.m4v *.mpeg *.mpg *.3gp *.3g2 *.avi *.dv)", "All Files (*)"]
     }
 
     PathScreen {
@@ -131,18 +135,18 @@ Item {
 
     PlaybackControl {
 
-        id: mediaControl
+        id: playbackControl
         width: parent.width
         height: controlHeight
         anchors.top: view.bottom
         color: mainParent.mainColor
 
-        videoSliderTo: media.getDuration()
+        videoSliderTo: media.getDuration
 
         onPlayAndPauseButtonClicked: {
 
-            if (media.getHasVideo()) {
-                if (media.getPlaying()) {
+            if (media.getHasVideo) {
+                if (media.getPlaying) {
                     media.pause()
                 } else {
                     media.play()
@@ -157,13 +161,13 @@ Item {
         }
 
         onVideoSliderMoved: {
-            media.position = getSliderValue()
+            media.setPosition = getVideoSliderValue
         }
 
-        videoSliderValue: media.getPosition()
+        videoSliderValue: media.getPosition
 
         onAudioSliderMoved: {
-            media.audioVolume = getAudioSliderValue()
+            media.audioVolume = getAudioSliderValue
         }
     }
 } // color: "#2E4053"// color: "#34495E"// color: "#E74C3C"// color: "#E74C3C"// color: "#34495E"// color: "#D6DBDF"

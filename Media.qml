@@ -9,31 +9,23 @@ Rectangle {
 
     property string mediaPlayerSourcePath
 
-    property int audioVolume
+    property real audioVolume
 
     signal playOrPause
 
     signal mediaPlayerPositionChanged
 
-    function getSeekable() {
-        return mediaplayer.seekable
-    }
+    property bool seekable: mediaplayer.seekable
 
-    function getPosition() {
-        return mediaplayer.position
-    }
+    property real getPosition: mediaplayer.position
 
-    function getDuration() {
-        return mediaplayer.duration
-    }
+    property real setPosition
 
-    function getHasVideo() {
-        return mediaplayer.hasVideo
-    }
+    property real getDuration: mediaplayer.duration
 
-    function getPlaying() {
-        return mediaplayer.playing
-    }
+    property bool getHasVideo: mediaplayer.hasVideo
+
+    property bool getPlaying: mediaplayer.playing
 
     function play() {
         mediaplayer.play()
@@ -47,26 +39,17 @@ Rectangle {
         mediaplayer.pause()
     }
 
-    property real position
     MediaPlayer {
 
         id: mediaplayer
 
         source: mediaPlayerSourcePath
 
-        position: root.position
+        position: root.setPosition
 
         audioOutput: AudioOutput {
 
-            // device: mediaDevices
             volume: audioVolume
-
-            // onDeviceChanged: {
-            //     console.log("Output device changed " + device)
-            // }
-            // Component.onCompleted: {
-            //     console.log(mediaDevices.audioOutputs)
-            // }
         }
 
         videoOutput: videoOutput
