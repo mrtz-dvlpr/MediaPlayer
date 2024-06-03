@@ -96,11 +96,7 @@ Item {
             }
         }
 
-        onMediaPlayerPositionChanged: {
-
-            // mediaControl.videoSliderValue = getPosition()
-            // mediaControl.sliderValue = mediaControl.getSliderValue() + 1
-        }
+        // audioVolume:
     }
 
     FileDialog {
@@ -133,7 +129,7 @@ Item {
         initialItem: pathScreen
     }
 
-    MediaControler {
+    PlaybackControl {
 
         id: mediaControl
         width: parent.width
@@ -160,9 +156,11 @@ Item {
             popPage()
         }
 
-        onVideoSliderControlValueChanged: {
-            media.setPosition(getSliderValue())
+        onVideoSliderMoved: {
+            media.position = getSliderValue()
         }
+
+        videoSliderValue: media.getPosition()
 
         onAudioSliderMoved: {
             media.audioVolume = getAudioSliderValue()

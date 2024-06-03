@@ -1,0 +1,1 @@
+fix video slider and clean slider code

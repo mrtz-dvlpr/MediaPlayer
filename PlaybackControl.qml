@@ -23,11 +23,13 @@ Rectangle {
 
     property bool videoSliderEnable
 
+    property real audioSliderValue: audioSlider.value/audioSlider.to
+
     signal playAndPauseButtonClicked
 
     signal stopButtonClicked
 
-    signal videoSliderControlValueChanged
+    signal videoSliderMoved
 
     signal ejectButtonClicked
 
@@ -53,9 +55,10 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width
             from: videoSliderFrom
+
             value: videoSliderValue
             to: videoSliderTo
-            onValueChanged: videoSliderControlValueChanged()
+            onMoved: videoSliderMoved()
             enabled: videoSliderEnable
         }
         Item {
@@ -75,12 +78,15 @@ Rectangle {
                     }
                 }
                 AudioSlider {
-                    from: 0
-                    to: 100
-                    value: 50
                     id: audioSlider
+
                     width: mainItem.width / 10
                     anchors.verticalCenter: parent.verticalCenter
+
+                    from: 0
+                    value: 50
+                    to: 100
+
                     onMoved: audioSliderMoved()
                 }
                 Button {

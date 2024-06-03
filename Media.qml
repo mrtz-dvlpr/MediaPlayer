@@ -5,7 +5,7 @@ import QtQuick.Dialogs
 
 Rectangle {
 
-    id: mediaScreen
+    id: root
 
     property string mediaPlayerSourcePath
 
@@ -47,18 +47,20 @@ Rectangle {
         mediaplayer.pause()
     }
 
-    function setPosition(input) {
-        mediaplayer.position = input
-    }
-
+    property real position
     MediaPlayer {
 
         id: mediaplayer
 
         source: mediaPlayerSourcePath
 
-        audioOutput: AudioOutput {// device: mediaDevices
-            // volume: audioVolume
+        position: root.position
+
+        audioOutput: AudioOutput {
+
+            // device: mediaDevices
+            volume: audioVolume
+
             // onDeviceChanged: {
             //     console.log("Output device changed " + device)
             // }

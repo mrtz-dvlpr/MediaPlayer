@@ -3,7 +3,7 @@
         <file>main.qml</file>
         <file>MainScreen.qml</file>
         <file>Media.qml</file>
-        <file>MediaControler.qml</file>
+        <file>PlaybackControl.qml</file>
         <file>PathScreen.qml</file>
         <file>icons/ios-17/icons8-audio-100.png</file>
         <file>icons/ios-17/icons8-audio-50.png</file>

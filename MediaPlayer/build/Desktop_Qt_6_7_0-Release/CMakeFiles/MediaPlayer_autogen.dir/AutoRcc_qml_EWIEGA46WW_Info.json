@@ -11,7 +11,7 @@
 		"/home/morteza/code/qml/MediaPlayer/VideoSlider.qml",
 		"/home/morteza/code/qml/MediaPlayer/Media.qml",
 		"/home/morteza/code/qml/MediaPlayer/MainScreen.qml",
-		"/home/morteza/code/qml/MediaPlayer/MediaControler.qml",
+		"/home/morteza/code/qml/MediaPlayer/PlaybackControl.qml",
 		"/home/morteza/code/qml/MediaPlayer/PathScreen.qml",
 		"/home/morteza/code/qml/MediaPlayer/main.qml",
 		"/home/morteza/code/qml/MediaPlayer/icons/svgviewer-output.svg",

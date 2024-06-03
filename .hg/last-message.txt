@@ -1,1 +1,1 @@
-add sound icon but audiooutput not work
+fix video slider and clean slider code
