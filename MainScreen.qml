@@ -37,17 +37,24 @@ Item {
     property double controlHeight: parent.height - mediaHeight
 
     function pushPage(screen, path) {
+
         media.mediaPlayerSourcePath = path
-        console.log(playbackControl.audioSliderValue)
         media.audioVolume = playbackControl.audioSliderValue
-        playbackControl.videoSliderEnable = true
+
+        playbackControl.setVideoSliderEnable = true
+
+        // playbackControl.setVideoSliderTo = media.getDuration
         view.push(screen)
     }
 
     function popPage() {
-        playbackControl.videoSliderEnable = false
+
         media.stop()
         media.mediaPlayerSourcePath = ""
+
+        playbackControl.setVideoSliderEnable = false
+
+        // playbackControl.setVideoSliderTo = 0
         view.pop()
     }
 
@@ -113,13 +120,13 @@ Item {
     }
 
     PathScreen {
+
         id: pathScreen
         color: mainColor
 
         onMouseAreaClicked: fileDialog.open()
 
         onDropAreaDropped: {
-
             pushPage(media, dropAreaDropUlr)
         }
     }
@@ -127,21 +134,25 @@ Item {
     StackView {
 
         id: view
+
         anchors.top: parent.top
+
         width: parent.width
         height: mediaHeight
+
         initialItem: pathScreen
     }
 
     PlaybackControl {
 
         id: playbackControl
+
         width: parent.width
         height: controlHeight
-        anchors.top: view.bottom
-        color: mainParent.mainColor
 
-        videoSliderTo: media.getDuration
+        anchors.top: view.bottom
+
+        color: mainParent.mainColor
 
         onPlayAndPauseButtonClicked: {
 
@@ -154,6 +165,8 @@ Item {
             }
         }
 
+        setVideoSliderTo: media.getHasVideo ? media.getDuration : 0
+
         onStopButtonClicked: media.stop()
 
         onEjectButtonClicked: {
@@ -164,7 +177,7 @@ Item {
             media.setPosition = getVideoSliderValue
         }
 
-        videoSliderValue: media.getPosition
+        setVideoSliderValue: media.getPosition
 
         onAudioSliderMoved: {
             media.audioVolume = getAudioSliderValue

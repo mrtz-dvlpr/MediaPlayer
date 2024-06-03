@@ -17,9 +17,9 @@ Rectangle {
 
     property bool seekable: mediaplayer.seekable
 
-    property real getPosition: mediaplayer.position
-
     property real setPosition
+
+    property real getPosition: mediaplayer.position
 
     property real getDuration: mediaplayer.duration
 

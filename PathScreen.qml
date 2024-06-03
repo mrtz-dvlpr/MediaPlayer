@@ -3,7 +3,7 @@ import QtQuick.Controls
 
 Rectangle {
 
-    id: main
+    id: root
 
     signal mouseAreaClicked
 
@@ -15,12 +15,12 @@ Rectangle {
 
         id: pathBox
 
-        width: main.width / 3
-        height: main.height / 3
+        width: root.width / 3
+        height: root.height / 3
 
         anchors.centerIn: parent
 
-        color: main.color
+        color: root.color
         radius: 5
         border.color: subColor
 
@@ -53,10 +53,10 @@ Rectangle {
     DropArea {
 
         id: dropArea
-        anchors.fill: main
+        anchors.fill: root
 
         onEntered: {
-            main.color = "#ABB2B9"
+            root.color = "#ABB2B9"
             pathBox.color = "#ABB2B9"
             pathBox.border.color = mainColor
             drag.accept(Qt.LinkAction)
@@ -64,7 +64,7 @@ Rectangle {
 
         onDropped: {
 
-            main.color = mainColor
+            root.color = mainColor
             pathBox.color = mainColor
             pathBox.border.color = subColor
 
@@ -87,7 +87,7 @@ Rectangle {
         }
 
         onExited: {
-            main.color = mainColor
+            root.color = mainColor
             pathBox.color = mainColor
             pathBox.border.color = subColor
         }

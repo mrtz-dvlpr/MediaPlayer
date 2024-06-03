@@ -3,27 +3,21 @@ import QtQuick.Controls
 
 Rectangle {
 
-    function millisToMinutesAndSeconds(millis) {
-        var minutes = Math.floor(millis / 60000)
-        var seconds = ((millis % 60000) / 1000).toFixed(0)
-        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
-    }
-
-    id: main
+    id: root
 
     property string playtAndPauseButtonIconPath: "qrc:/icons/Pulsar/icons8-circled-play-96.png"
 
     property int buttonSize: 50
 
-    property int videoSliderTo
+    property real setVideoSliderTo
 
-    property real videoSliderValue
+    property real setVideoSliderValue
 
-    property bool videoSliderEnable
+    property bool setVideoSliderEnable
 
     property real audioSliderValue: audioSlider.value / audioSlider.to
 
-    property real getAudioSliderValue: audioSlider.value
+    property real getAudioSliderValue: audioSlider.value / audioSlider.to
 
     property real getVideoSliderValue: videoSlider.value
 
@@ -37,35 +31,82 @@ Rectangle {
 
     signal audioSliderMoved
 
+    function millisToMinutesAndSeconds(millis) {
+        var minutes = Math.floor(millis / 60000)
+        var seconds = ((millis % 60000) / 1000).toFixed(0)
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
+    }
+
     Column {
 
         anchors.fill: parent
         spacing: 6
 
-        VideoSlider {
-
-            id: videoSlider
-
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: parent.width
-
-            from: 0.0
-            value: videoSliderValue
-            to: videoSliderTo
-
-            onMoved: videoSliderMoved()
-
-            enabled: videoSliderEnable
-        }
         Item {
-            id: mainItem
+
+            id: videoSliderItem
+
             width: parent.width
-            height: parent.height * 4 / 5
 
             Row {
+
+                id: videoSliderRow
+
+                spacing: 10
+
+                width: parent.width
+
+                Text {
+
+                    id: positionTimeText
+
+                    text: qsTr(millisToMinutesAndSeconds(setVideoSliderValue))
+
+                    color: subColor
+                }
+
+                VideoSlider {
+
+                    id: videoSlider
+                    width: videoSliderRow.width - positionTimeText.width
+                           - durationTiemText.width - 20
+
+                    from: 0.0
+                    value: setVideoSliderValue
+                    to: setVideoSliderTo
+
+                    onMoved: {
+                        console.log(videoSliderRow.width)
+                        videoSliderMoved()
+                    }
+                    enabled: setVideoSliderEnable
+                }
+
+                Text {
+
+                    id: durationTiemText
+
+                    text: qsTr(millisToMinutesAndSeconds(setVideoSliderTo))
+
+                    color: subColor
+                }
+            }
+        }
+
+        Item {
+            id: mainItem
+
+            width: parent.width
+            height: parent.height
+
+            Row {
+
                 x: parent.width / 30
+
                 anchors.verticalCenter: parent.verticalCenter
+
                 spacing: 4
+
                 Button {
                     width: buttonSize * 3 / 5
                     height: width
@@ -93,6 +134,7 @@ Rectangle {
                     }
                 }
             }
+
             Row {
                 anchors.centerIn: parent
 
@@ -120,7 +162,7 @@ Rectangle {
                     background: Image {
 
                         id: playAndPauseButtonImage
-                        source: main.playtAndPauseButtonIconPath
+                        source: root.playtAndPauseButtonIconPath
                     }
 
                     onClicked: playAndPauseButtonClicked()

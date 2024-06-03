@@ -1,1 +1,2 @@
-fix slider and cleaned the code set filter for drop and filedialog 
+add time to slider
+ 
