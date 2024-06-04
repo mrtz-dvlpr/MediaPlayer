@@ -155,7 +155,10 @@ Rectangle {
                     value: 50
                     to: 100
 
-                    onMoved: audioSliderMoved()
+                    onMoved: {
+                        audioSliderMoved()
+                        console.log(test)
+                    }
                     // onValueChanged: {
                     //     audioSliderValueChanged()
                     // }
