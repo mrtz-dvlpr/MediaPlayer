@@ -4,7 +4,7 @@ import QtQuick.Dialogs
 
 Item {
 
-    id: mainParent
+    id: mainRoot
 
     // property color mainColor: "#2E4053"
     // property color mainColor: "#E3FCFF"
@@ -28,6 +28,8 @@ Item {
     // property color subColor: "#E74C3C"
     property color subColor: "#FA5252"
 
+    property color subColor2:"#ABB2B9"
+
     property color buttonColor: "#FFFFFF"
 
     anchors.fill: parent
@@ -39,10 +41,11 @@ Item {
     function pushPage(screen, path) {
 
         media.mediaPlayerSourcePath = path
-        media.audioVolume = playbackControl.audioSliderValue
+        media.audioVolume = playbackControl.getAudioSliderValue
 
         playbackControl.setVideoSliderEnable = true
 
+        console.log(media.setMuted)
         // playbackControl.setVideoSliderTo = media.getDuration
         view.push(screen)
     }
@@ -152,7 +155,7 @@ Item {
 
         anchors.top: view.bottom
 
-        color: mainParent.mainColor
+        color: mainRoot.mainColor
 
         onPlayAndPauseButtonClicked: {
 
@@ -181,6 +184,15 @@ Item {
 
         onAudioSliderMoved: {
             media.audioVolume = getAudioSliderValue
+        }
+
+        // onAudioSliderValueChanged: {
+        //     media.audioVolume = getAudioSliderValue
+        // }
+        audioMuteButtonSource: media.setMuted ? "qrc:/icons/Pulsar/icons8-mute-96.png" : "qrc:/icons/Pulsar/icons8-voice-96.png"
+
+        onMuteButtonClicked: {
+            media.setMuted = !media.setMuted
         }
     }
 } // color: "#2E4053"// color: "#34495E"// color: "#E74C3C"// color: "#E74C3C"// color: "#34495E"// color: "#D6DBDF"

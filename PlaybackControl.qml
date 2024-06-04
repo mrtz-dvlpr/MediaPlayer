@@ -15,11 +15,17 @@ Rectangle {
 
     property bool setVideoSliderEnable
 
-    property real audioSliderValue: audioSlider.value / audioSlider.to
-
     property real getAudioSliderValue: audioSlider.value / audioSlider.to
 
     property real getVideoSliderValue: videoSlider.value
+
+    property bool setLowerSoundAudioButtomEnable
+
+    property bool setAudioSliderEnable
+
+    property bool setHigherSoundAudioButtomEnable
+
+    property string audioMuteButtonSource: "qrc:/icons/Pulsar/icons8-voice-96.png"
 
     signal playAndPauseButtonClicked
 
@@ -29,9 +35,13 @@ Rectangle {
 
     signal ejectButtonClicked
 
+    signal muteButtonClicked
+
+    // signal audioSliderValueChanged
     signal audioSliderMoved
 
     function millisToMinutesAndSeconds(millis) {
+
         var minutes = Math.floor(millis / 60000)
         var seconds = ((millis % 60000) / 1000).toFixed(0)
         return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
@@ -50,6 +60,7 @@ Rectangle {
 
             Row {
 
+                x: 10
                 id: videoSliderRow
 
                 spacing: 10
@@ -69,7 +80,7 @@ Rectangle {
 
                     id: videoSlider
                     width: videoSliderRow.width - positionTimeText.width
-                           - durationTiemText.width - 20
+                           - durationTiemText.width - 40
 
                     from: 0.0
                     value: setVideoSliderValue
@@ -79,6 +90,7 @@ Rectangle {
                         console.log(videoSliderRow.width)
                         videoSliderMoved()
                     }
+
                     enabled: setVideoSliderEnable
                 }
 
@@ -108,14 +120,33 @@ Rectangle {
                 spacing: 4
 
                 Button {
+                    id: muteButtom
                     width: buttonSize * 3 / 5
                     height: width
+
                     background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-sound-speaker-96.png"
+                        source: audioMuteButtonSource
+                    }
+                    onClicked: {
+                        muteButtonClicked()
                     }
                 }
+                // Button {
+                //     width: buttonSize * 3 / 5
+                //     height: width
+                //     background: Image {
+                //         source: "qrc:/icons/Pulsar/icons8-low-volume-96.png"
+                //     }
+
+                //     onClicked: {
+                //         if (audioSlider.value > 4)
+                //             audioSlider.value -= 5
+                //     }
+                // }
                 AudioSlider {
                     id: audioSlider
+
+                    stepSize: 5
 
                     width: mainItem.width / 10
                     anchors.verticalCenter: parent.verticalCenter
@@ -125,14 +156,22 @@ Rectangle {
                     to: 100
 
                     onMoved: audioSliderMoved()
+                    // onValueChanged: {
+                    //     audioSliderValueChanged()
+                    // }
                 }
-                Button {
-                    width: buttonSize * 3 / 5
-                    height: width
-                    background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-audio-96 (1).png"
-                    }
-                }
+                // Button {
+                //     width: buttonSize * 3 / 5
+                //     height: width
+                //     background: Image {
+                //         source: "qrc:/icons/Pulsar/icons8-audio-96.png"
+                //     }
+                //     onClicked: {
+                //         if (audioSlider.value < 96) {
+                //             audioSlider.value += 5
+                //         }
+                //     }
+                // }
             }
 
             Row {

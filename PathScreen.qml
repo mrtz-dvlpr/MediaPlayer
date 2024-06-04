@@ -31,22 +31,22 @@ Rectangle {
         }
 
         Column {
-            spacing: 8
+            spacing: 20
             anchors.centerIn: parent
             Image {
 
                 anchors.horizontalCenter: parent.horizontalCenter
-
                 id: button
                 width: pathBox.width / 5.5
                 height: pathBox.height / 3
                 source: "qrc:/icons/svgviewer-output.svg"
             }
-
             Text {
-                anchors.horizontalCenter: parent.horizontalCenter
+
+                // anchors.centerIn: parent
+                // width: parent.width
                 id: name
-                text: qsTr("file path")
+                text: "<font color=\"#ABB2B9\">click </font><font color=\"#FA5252\">here</font> <font color=\"#ABB2B9\">to select video file or drop here </font>"
             }
         }
     }

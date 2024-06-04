@@ -4,10 +4,16 @@ import QtMultimedia
 import QtQuick.Controls
 
 Window {
+
     width: 940
     height: 680
+
+    minimumWidth: 880
+    minimumHeight: 600
+
     visible: true
-    title: qsTr("Hello World")
+
+    title: qsTr("MR Player")
 
     MainScreen {
         anchors.fill: parent

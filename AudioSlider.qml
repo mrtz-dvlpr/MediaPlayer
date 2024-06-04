@@ -3,6 +3,9 @@ import QtQuick.Controls
 
 Slider {
     id: control
+    property color test: "#" + (audioSlider.value * 255 / 100).toString(16).toUpperCase(
+                             ) + ((100 - audioSlider.value) * 255 / 100).toString(16).toUpperCase(
+                             ) + ((100 - audioSlider.value) * 255 / 100).toString(16).toUpperCase()
     background: Rectangle {
         x: control.leftPadding
         y: control.topPadding + control.availableHeight / 2 - height / 2
@@ -12,14 +15,12 @@ Slider {
         height: implicitHeight
         radius: 2
 
-        color: mainColor
-
-        // color: "#2C3E50"
+        color: "#566573"
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            // color: "#E74C3C"
-            color: buttonColor
+            // color: buttonColor
+            color: test
             radius: 2
         }
     }
@@ -33,7 +34,8 @@ Slider {
         radius: 13
 
         border.width: control.pressed ? width / 2 : 1
-        border.color: control.hovered ? buttonColor : control.background.color
+        // border.color: control.hovered ? buttonColor : control.background.color
+        border.color: control.pressed ? test : control.background.color
 
         Behavior on border.width {
             SmoothedAnimation {}

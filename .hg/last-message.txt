@@ -1,2 +1,2 @@
-add time to slider
+fix audio slider
  

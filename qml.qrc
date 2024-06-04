@@ -251,5 +251,6 @@
         <file>icons/windows11/icons8-rewind-button-round-windows-11-color.zip</file>
         <file>icons/windows11/icons8-stop-circled-windows-11-color.zip</file>
         <file>AudioSlider.qml</file>
+        <file>icons/Pulsar/icons8-audio-96.png</file>
     </qresource>
 </RCC>
