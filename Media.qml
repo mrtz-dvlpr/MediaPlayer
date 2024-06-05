@@ -7,7 +7,7 @@ Rectangle {
 
     id: root
 
-    property string mediaPlayerSourcePath
+    property string mediaplayerSourceUrl
 
     property real audioVolume
 
@@ -29,8 +29,7 @@ Rectangle {
 
     property bool getPlaying: mediaplayer.playing
 
-
-    property VideoOutput test:videoOutput
+    property VideoOutput videoOutput: videoOutput
 
     function play() {
         mediaplayer.play()
@@ -46,12 +45,11 @@ Rectangle {
         mediaplayer.pause()
     }
 
-
     MediaPlayer {
 
         id: mediaplayer
 
-        source: mediaPlayerSourcePath
+        source: mediaplayerSourceUrl
 
         position: root.setPosition
 
@@ -65,6 +63,23 @@ Rectangle {
 
         onPlaybackStateChanged: {
             playOrPause()
+            // if (!metaData.isEmpty()) {
+            //     // [14,10,13,15,27,12,26,2,16,17]
+            //     if (metaData) {
+            //         for (var key of metaData.keys()) {
+            //             if (metaData.stringValue(key)) {
+
+            //                 console.log(metaData.metaDataKeyToString(
+            //                                 key) + " : " + metaData.stringValue(
+            //                                 key))
+            //                 // elements.append(
+            //                 //             { name: metadata.metaDataKeyToString(key)
+            //                 //             , value: metadata.stringValue(key)
+            //                 //             })
+            //             }
+            //         }
+            //     }
+            // }
         }
 
         onPositionChanged: mediaPlayerPositionChanged()
@@ -74,5 +89,4 @@ Rectangle {
         id: videoOutput
         anchors.fill: parent
     }
-
 }

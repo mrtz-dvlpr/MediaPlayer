@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
-import QtQuick.Window
 
 Item {
 
@@ -36,8 +35,22 @@ Item {
     anchors.fill: parent
 
     property double heightLength: 13 / 15
+
     property double mediaHeight: parent.height * heightLength
+
     property double controlHeight: parent.height - mediaHeight
+
+    property string fileName
+
+    property string filePath
+
+    function getFileName(fileUrl) {
+        return fileUrl.split('/').pop().split('.')[0]
+    }
+
+    function getFilePath(input) {
+        return input.substring(7, input.lastIndexOf('/'))
+    }
 
     function millisToMinutesAndSeconds(millis) {
 
@@ -48,24 +61,24 @@ Item {
 
     function pushPage(screen, path) {
 
-        media.mediaPlayerSourcePath = path
+        media.mediaplayerSourceUrl = path
         media.audioVolume = playbackControl.getAudioSliderValue
 
         playbackControl.setVideoSliderEnable = true
 
-        console.log(media.setMuted)
-        // playbackControl.setVideoSliderTo = media.getDuration
+        fileName = getFileName(media.mediaplayerSourceUrl)
+
         view.push(screen)
     }
 
     function popPage() {
 
         media.stop()
-        media.mediaPlayerSourcePath = ""
+        media.mediaplayerSourceUrl = ""
 
+        fileName = ""
         playbackControl.setVideoSliderEnable = false
 
-        // playbackControl.setVideoSliderTo = 0
         view.pop()
     }
 
@@ -176,10 +189,6 @@ Item {
 
         color: mainRoot.mainColor
 
-        // MessageDialog {
-        //     text: "hello"
-        // }
-
         // Button {
         //     anchors.centerIn: parent
         //     text: "Capture Frame"
@@ -229,16 +238,32 @@ Item {
         onMuteButtonClicked: {
             media.setMuted = !media.setMuted
         }
+
         onScreenshotButtonClicked: {
-            if (media.test.grabToImage(function (result) {
-                result.saveToFile(
-                            "/home/morteza/Desktop/capturedFrame" + millisToMinutesAndSeconds(
-                                getVideoSliderValue) + ".png")
-            })) {
-                console.log("Capture attempt made")
-            } else {
-                console.log("do not Capture attempt made")
+            if (media.getHasVideo) {
+
+                if (media.videoOutput.grabToImage(function (result) {
+
+                    result.saveToFile(
+                                media.mediaplayerSourceUrl + "_" + millisToMinutesAndSeconds(
+                                    getVideoSliderValue) + ".png")
+
+                    var screenshotOutput = fileName + "_" + millisToMinutesAndSeconds(
+                                getVideoSliderValue) + ".png"
+
+                    openScreenshotDialog(screenshotOutput, getFilePath(
+                                             media.mediaplayerSourceUrl))
+                })) {
+                    console.log("Capture attempt made")
+                } else {
+                    console.log("do not Capture attempt made")
+                }
             }
         }
+
+        // MessageDialog {
+        //     id: message
+        //     text: "hello"
+        // }
     }
 } // color: "#2E4053"// color: "#34495E"// color: "#E74C3C"// color: "#E74C3C"// color: "#34495E"// color: "#D6DBDF"

@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Dialogs
 
 Rectangle {
 
@@ -41,13 +42,18 @@ Rectangle {
 
     signal screenshotButtonClicked
 
+    function openScreenshotDialog(name, path) {
+        screenshotLabel.text = qsTr(
+                    "the " + name + " file saved in \" " + path + " \" directory")
+        screenshotMessage.open()
+    }
+
     // function millisToMinutesAndSeconds(millis) {
 
     //     var minutes = Math.floor(millis / 60000)
     //     var seconds = ((millis % 60000) / 1000).toFixed(0)
     //     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
     // }
-
     Column {
 
         anchors.fill: parent
@@ -228,6 +234,8 @@ Rectangle {
             }
             Item {
 
+                id: rightItem
+
                 anchors.verticalCenter: parent.verticalCenter
 
                 x: parent.width * 9 / 10
@@ -238,8 +246,6 @@ Rectangle {
 
                     anchors.centerIn: parent
 
-                    text: "Capture Frame"
-
                     width: buttonSize * 3 / 4
                     height: width
 
@@ -247,7 +253,43 @@ Rectangle {
                         source: "qrc:/icons/Pulsar/icons8-take-screenshot-96.png"
                     }
 
-                    onClicked: screenshotButtonClicked()
+                    onClicked: {
+                        screenshotButtonClicked()
+                        screenshotMessageTimer.start()
+                    }
+
+                    Dialog {
+
+                        id: screenshotMessage
+
+                        x: -rightItem.x + mainRoot.width / 2 - width / 2
+                        y: -(mainRoot.height) / 6
+
+                        opacity: 0.5
+
+                        background: Rectangle {
+                            color: subColor2
+                            radius: 10
+                        }
+
+                        Label {
+                            id: screenshotLabel
+                        }
+
+                        Timer {
+                            id: screenshotMessageTimer
+
+                            running: true
+                            repeat: false
+
+                            interval: 2000
+
+                            onTriggered: {
+                                screenshotMessage.close()
+                                console.log("282")
+                            }
+                        }
+                    }
                 }
             }
         }
