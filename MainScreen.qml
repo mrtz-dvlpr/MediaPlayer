@@ -256,7 +256,7 @@ Item {
                     var screenshotOutputPath = getFilePath(
                                 media.mediaplayerSourceUrl)
 
-                    dialogMessage = "the " + screenshotOutputName + " file saved in \" "
+                    dialogMessage = "the \"" + screenshotOutputName + "\" file saved in \" "
                             + screenshotOutputPath + " \" directory"
                     color = "#ABEBC6"
                 } else {
@@ -266,10 +266,5 @@ Item {
                 openScreenshotDialog(dialogMessage, color)
             }
         }
-
-        // MessageDialog {
-        //     id: message
-        //     text: "hello"
-        // }
     }
-} // color: "#2E4053"// color: "#34495E"// color: "#E74C3C"// color: "#E74C3C"// color: "#34495E"// color: "#D6DBDF"
+}
