@@ -252,5 +252,6 @@
         <file>icons/windows11/icons8-stop-circled-windows-11-color.zip</file>
         <file>AudioSlider.qml</file>
         <file>icons/Pulsar/icons8-audio-96.png</file>
+        <file>icons/Pulsar/icons8-take-screenshot-96.png</file>
     </qresource>
 </RCC>

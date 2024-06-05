@@ -1,1 +1,0 @@
-set audio slider variable color

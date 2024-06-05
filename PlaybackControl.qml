@@ -37,15 +37,16 @@ Rectangle {
 
     signal muteButtonClicked
 
-    // signal audioSliderValueChanged
     signal audioSliderMoved
 
-    function millisToMinutesAndSeconds(millis) {
+    signal screenshotButtonClicked
 
-        var minutes = Math.floor(millis / 60000)
-        var seconds = ((millis % 60000) / 1000).toFixed(0)
-        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
-    }
+    // function millisToMinutesAndSeconds(millis) {
+
+    //     var minutes = Math.floor(millis / 60000)
+    //     var seconds = ((millis % 60000) / 1000).toFixed(0)
+    //     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
+    // }
 
     Column {
 
@@ -223,6 +224,30 @@ Rectangle {
 
                         stopButtonClicked()
                     }
+                }
+            }
+            Item {
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                x: parent.width * 9 / 10
+
+                Button {
+
+                    id: screenshotButton
+
+                    anchors.centerIn: parent
+
+                    text: "Capture Frame"
+
+                    width: buttonSize * 3 / 4
+                    height: width
+
+                    background: Image {
+                        source: "qrc:/icons/Pulsar/icons8-take-screenshot-96.png"
+                    }
+
+                    onClicked: screenshotButtonClicked()
                 }
             }
         }

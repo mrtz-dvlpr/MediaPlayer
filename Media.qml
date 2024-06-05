@@ -17,7 +17,6 @@ Rectangle {
 
     property bool seekable: mediaplayer.seekable
 
-    // property bool getMuted: audioOutput.muted
     property bool setMuted: false
 
     property real setPosition
@@ -29,6 +28,9 @@ Rectangle {
     property bool getHasVideo: mediaplayer.hasVideo
 
     property bool getPlaying: mediaplayer.playing
+
+
+    property VideoOutput test:videoOutput
 
     function play() {
         mediaplayer.play()
@@ -43,6 +45,7 @@ Rectangle {
     function pause() {
         mediaplayer.pause()
     }
+
 
     MediaPlayer {
 
@@ -60,7 +63,6 @@ Rectangle {
 
         videoOutput: videoOutput
 
-
         onPlaybackStateChanged: {
             playOrPause()
         }
@@ -72,4 +74,5 @@ Rectangle {
         id: videoOutput
         anchors.fill: parent
     }
+
 }

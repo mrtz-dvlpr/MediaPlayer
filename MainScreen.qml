@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
+import QtQuick.Window
 
 Item {
 
@@ -28,7 +29,7 @@ Item {
     // property color subColor: "#E74C3C"
     property color subColor: "#FA5252"
 
-    property color subColor2:"#ABB2B9"
+    property color subColor2: "#ABB2B9"
 
     property color buttonColor: "#FFFFFF"
 
@@ -37,6 +38,13 @@ Item {
     property double heightLength: 13 / 15
     property double mediaHeight: parent.height * heightLength
     property double controlHeight: parent.height - mediaHeight
+
+    function millisToMinutesAndSeconds(millis) {
+
+        var minutes = Math.floor(millis / 60000)
+        var seconds = ((millis % 60000) / 1000).toFixed(0)
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
+    }
 
     function pushPage(screen, path) {
 
@@ -67,6 +75,17 @@ Item {
 
         id: media
 
+        // Button {
+        //     anchors.centerIn: parent
+        //     text: "Capture Frame"
+        //     onClicked: {
+        //         videoOutput.grabToImage(function (result) {
+        //             result.saveToFile(
+        //                         "file:///home/morteza/Desktop/capturedFrame.png")
+        //         })
+        //         console.log("capture")
+        //     }
+        // }
         MouseArea {
             width: parent.width / 3
             height: parent.height
@@ -157,6 +176,22 @@ Item {
 
         color: mainRoot.mainColor
 
+        // MessageDialog {
+        //     text: "hello"
+        // }
+
+        // Button {
+        //     anchors.centerIn: parent
+        //     text: "Capture Frame"
+        //     onClicked: {
+        //         if (media.test.grabToImage(function (result) {
+        //             // var path = Qt.resolvedUrl("capturedFrame.png")
+        //             result.saveToFile("/home/morteza/Desktop/capturedFrame.png")
+        //         })) {
+        //             console.log("Capture attempt made")
+        //         }
+        //     }
+        // }
         onPlayAndPauseButtonClicked: {
 
             if (media.getHasVideo) {
@@ -193,6 +228,17 @@ Item {
 
         onMuteButtonClicked: {
             media.setMuted = !media.setMuted
+        }
+        onScreenshotButtonClicked: {
+            if (media.test.grabToImage(function (result) {
+                result.saveToFile(
+                            "/home/morteza/Desktop/capturedFrame" + millisToMinutesAndSeconds(
+                                getVideoSliderValue) + ".png")
+            })) {
+                console.log("Capture attempt made")
+            } else {
+                console.log("do not Capture attempt made")
+            }
         }
     }
 } // color: "#2E4053"// color: "#34495E"// color: "#E74C3C"// color: "#E74C3C"// color: "#34495E"// color: "#D6DBDF"

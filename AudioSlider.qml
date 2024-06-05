@@ -38,7 +38,7 @@ Slider {
 
         border.width: control.pressed ? width / 2 : 1
         // border.color: control.hovered ? buttonColor : control.background.color
-        border.color: control.hovered ? test : control.background.color
+        border.color: control.valueChanged ? test : control.background.color
 
         Behavior on border.width {
             SmoothedAnimation {}
