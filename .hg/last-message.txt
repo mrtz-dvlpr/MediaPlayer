@@ -1,1 +1,1 @@
-add screenshot
+add screenshot width show dialog

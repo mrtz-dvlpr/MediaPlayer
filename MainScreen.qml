@@ -241,23 +241,29 @@ Item {
 
         onScreenshotButtonClicked: {
             if (media.getHasVideo) {
-
+                var dialogMessage = ""
+                var color = ""
                 if (media.videoOutput.grabToImage(function (result) {
+                    var captureNameAndDirectory = media.mediaplayerSourceUrl
+                            + "_" + millisToMinutesAndSeconds(
+                                getVideoSliderValue) + ".png"
+                    result.saveToFile(captureNameAndDirectory)
+                })) {
 
-                    result.saveToFile(
-                                media.mediaplayerSourceUrl + "_" + millisToMinutesAndSeconds(
-                                    getVideoSliderValue) + ".png")
-
-                    var screenshotOutput = fileName + "_" + millisToMinutesAndSeconds(
+                    var screenshotOutputName = fileName + "_" + millisToMinutesAndSeconds(
                                 getVideoSliderValue) + ".png"
 
-                    openScreenshotDialog(screenshotOutput, getFilePath(
-                                             media.mediaplayerSourceUrl))
-                })) {
-                    console.log("Capture attempt made")
+                    var screenshotOutputPath = getFilePath(
+                                media.mediaplayerSourceUrl)
+
+                    dialogMessage = "the " + screenshotOutputName + " file saved in \" "
+                            + screenshotOutputPath + " \" directory"
+                    color = "#ABEBC6"
                 } else {
-                    console.log("do not Capture attempt made")
+                    dialogMessage = "Failed to capture screenshot"
+                    color = subColor
                 }
+                openScreenshotDialog(dialogMessage, color)
             }
         }
 

@@ -42,9 +42,9 @@ Rectangle {
 
     signal screenshotButtonClicked
 
-    function openScreenshotDialog(name, path) {
-        screenshotLabel.text = qsTr(
-                    "the " + name + " file saved in \" " + path + " \" directory")
+    function openScreenshotDialog(inputMessage , messageColor ) {
+        dialogLabel.text = qsTr(inputMessage)
+        dialogBackground.color=messageColor
         screenshotMessage.open()
     }
 
@@ -255,7 +255,7 @@ Rectangle {
 
                     onClicked: {
                         screenshotButtonClicked()
-                        screenshotMessageTimer.start()
+                        dialogTimer.start()
                     }
 
                     Dialog {
@@ -268,16 +268,16 @@ Rectangle {
                         opacity: 0.5
 
                         background: Rectangle {
-                            color: subColor2
+                            id: dialogBackground
                             radius: 10
                         }
 
                         Label {
-                            id: screenshotLabel
+                            id: dialogLabel
                         }
 
                         Timer {
-                            id: screenshotMessageTimer
+                            id: dialogTimer
 
                             running: true
                             repeat: false
