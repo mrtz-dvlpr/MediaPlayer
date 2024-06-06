@@ -257,5 +257,8 @@
         <file>icons/Pulsar/icons8-open-view-in-new-tab-96.png</file>
         <file>icons/Pulsar/icons8-full-page-view-96.png</file>
         <file>icons/Pulsar/icons8-open-end-wrench-96.png</file>
+        <file>icons/Pulsar/icons8-video-stabilization-96.png</file>
+        <file>icons/Pulsar/icons8-video-file-96.png</file>
+        <file>icons/Pulsar/icons8-advanced-search-96.png</file>
     </qresource>
 </RCC>

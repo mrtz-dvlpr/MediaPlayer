@@ -124,8 +124,10 @@ Rectangle {
                     }
 
                     onClicked: {
-
-                        console.log(window.maximumHeight)
+                        console.log("----129")
+                        console.log(screenWidth == Screen.width ? 940 : Screen.width)
+                        console.log(screenHeight == Screen.height ? 680 : Screen.heigth)
+                        console.log("----130")
                     }
                 }
             }
@@ -320,11 +322,14 @@ Rectangle {
                     height: width
 
                     background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-take-screenshot-96.png"
+                        source: "qrc:/icons/Pulsar/icons8-video-stabilization-96.png"
                     }
+
+                    property bool test: false
 
                     onClicked: {
                         screenshotButtonClicked()
+                        screenshotButton.test = true
                         dialogTimer.start()
                     }
 
@@ -332,7 +337,7 @@ Rectangle {
 
                         id: screenshotMessage
 
-                        x: -rightItem.x + mainRoot.width / 2 - width / 2
+                        x: -rightItem.x + (mainRoot.width - width) / 2
                         y: -(mainRoot.height) / 6
 
                         opacity: 0.5
@@ -349,14 +354,16 @@ Rectangle {
                         Timer {
                             id: dialogTimer
 
-                            running: true
                             repeat: false
+
+                            running: screenshotButton.test
 
                             interval: 2000
 
                             onTriggered: {
                                 screenshotMessage.close()
-                                console.log("282")
+                                console.log("361")
+                                screenshotButton.test = false
                             }
                         }
                     }

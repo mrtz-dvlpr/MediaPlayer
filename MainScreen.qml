@@ -156,7 +156,8 @@ Item {
         onAccepted: {
             pushPage(media, selectedFile)
         }
-        nameFilters: ["Video Files (*.mov *.mp4 *.m4v *.mpeg *.mpg *.3gp *.3g2 *.avi *.dv)", "All Files (*)"]
+        nameFilters: ["Video Files (*.mov *.mp4 *.m4v
+*.mpeg *.mpg *.3gp *.3g2 *.avi *.dv)", "All Files (*)"]
     }
 
     PathScreen {
@@ -235,9 +236,6 @@ Item {
             media.audioVolume = getAudioSliderValue
         }
 
-        // onAudioSliderValueChanged: {
-        //     media.audioVolume = getAudioSliderValue
-        // }
         audioMuteButtonSource: media.setMuted ? "qrc:/icons/Pulsar/icons8-mute-96.png" : "qrc:/icons/Pulsar/icons8-voice-96.png"
 
         onMuteButtonClicked: {
@@ -245,28 +243,28 @@ Item {
         }
 
         onScreenshotButtonClicked: {
+
             if (media.getHasVideo) {
-                var dialogMessage = ""
-                var color = ""
                 var screenshotName = ""
-                if (media.videoOutput.grabToImage(function (result) {
+                var messageColor
+                var messageDialog
+                media.videoOutput.grabToImage(function (result) {
 
                     screenshotName = fileName + "_" + millisToMinutesAndSeconds(
                                 getVideoSliderValue) + ".png"
                     var captureNameAndDirectory = "file://" + screenshotPath + "/" + screenshotName
 
                     if (result.saveToFile(captureNameAndDirectory)) {
-                        dialogMessage = "the \"" + screenshotName + "\" file saved in \" "
+                        messageDialog = "the \"" + screenshotName + "\" file saved in \" "
                                 + screenshotPath + " \" directory"
-                        color = "#ABEBC6"
+                        messageColor = "#ABEBC6"
+                        openScreenshotDialog(messageDialog, messageColor)
                     } else {
-                        dialogMessage = "Failed to capture screenshot"
-                        color = subColor
+                        messageDialog = "Failed to capture screenshot"
+                        messageColor = subColor
+                        openScreenshotDialog(messageDialog, messageColor)
                     }
-                })) {
-                    // openScreenshotDialog(dialogMessage, color)
-                    openScreenshotDialog("hello ", "red")
-                }
+                })
             }
         }
     }

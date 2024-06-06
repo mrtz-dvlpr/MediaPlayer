@@ -5,8 +5,13 @@ import QtQuick.Controls
 
 Window {
 
-    width: 940
-    height: 680
+    id: window
+
+    property int screenWidth : 940
+    property int screenHeight : 680
+
+    width: screenWidth
+    height: screenHeight
 
     minimumWidth: 880
     minimumHeight: 600

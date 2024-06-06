@@ -40,6 +40,7 @@ Rectangle {
                 width: pathBox.width / 5.5
                 height: pathBox.height / 3
                 source: "qrc:/icons/Pulsar/icons8-open-view-in-new-tab-96 (1).png"
+                // source: "qrc:/icons/Pulsar/icons8-video-file-96.png"
             }
             Text {
 
