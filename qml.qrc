@@ -253,5 +253,9 @@
         <file>AudioSlider.qml</file>
         <file>icons/Pulsar/icons8-audio-96.png</file>
         <file>icons/Pulsar/icons8-take-screenshot-96.png</file>
+        <file>icons/Pulsar/icons8-open-view-in-new-tab-96 (1).png</file>
+        <file>icons/Pulsar/icons8-open-view-in-new-tab-96.png</file>
+        <file>icons/Pulsar/icons8-full-page-view-96.png</file>
+        <file>icons/Pulsar/icons8-open-end-wrench-96.png</file>
     </qresource>
 </RCC>

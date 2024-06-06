@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
+import QtQuick.Layouts
+import QtQuick.Window
 
 Rectangle {
 
@@ -28,6 +30,8 @@ Rectangle {
 
     property string audioMuteButtonSource: "qrc:/icons/Pulsar/icons8-voice-96.png"
 
+    property string screenshotPath
+
     signal playAndPauseButtonClicked
 
     signal stopButtonClicked
@@ -42,9 +46,9 @@ Rectangle {
 
     signal screenshotButtonClicked
 
-    function openScreenshotDialog(inputMessage , messageColor ) {
+    function openScreenshotDialog(inputMessage, messageColor) {
         dialogLabel.text = qsTr(inputMessage)
-        dialogBackground.color=messageColor
+        dialogBackground.color = messageColor
         screenshotMessage.open()
     }
 
@@ -87,7 +91,7 @@ Rectangle {
 
                     id: videoSlider
                     width: videoSliderRow.width - positionTimeText.width
-                           - durationTiemText.width - 40
+                           - durationTiemText.width - fullScreenButton.width - 50
 
                     from: 0.0
                     value: setVideoSliderValue
@@ -108,6 +112,21 @@ Rectangle {
                     text: qsTr(millisToMinutesAndSeconds(setVideoSliderTo))
 
                     color: subColor
+                }
+                Button {
+                    id: fullScreenButton
+
+                    width: buttonSize / 3
+                    height: width
+
+                    background: Image {
+                        source: "qrc:/icons/Pulsar/icons8-full-page-view-96.png"
+                    }
+
+                    onClicked: {
+
+                        console.log(window.maximumHeight)
+                    }
                 }
             }
         }
@@ -138,6 +157,7 @@ Rectangle {
                         muteButtonClicked()
                     }
                 }
+
                 // Button {
                 //     width: buttonSize * 3 / 5
                 //     height: width
@@ -170,6 +190,7 @@ Rectangle {
                     //     audioSliderValueChanged()
                     // }
                 }
+
                 // Button {
                 //     width: buttonSize * 3 / 5
                 //     height: width
@@ -187,7 +208,6 @@ Rectangle {
             Row {
                 anchors.centerIn: parent
 
-                // anchors.centerIn: parent
                 Button {
                     id: eject
 
@@ -232,19 +252,69 @@ Rectangle {
                     }
                 }
             }
-            Item {
+
+            Row {
 
                 id: rightItem
 
+                x: parent.width * 8 / 9
+
                 anchors.verticalCenter: parent.verticalCenter
 
-                x: parent.width * 9 / 10
+                spacing: 10
+
+                Button {
+                    id: settingButton
+
+                    width: buttonSize * 3 / 5
+                    height: width
+
+                    background: Image {
+                        source: "qrc:/icons/Pulsar/icons8-open-end-wrench-96.png"
+                    }
+
+                    onClicked: inputDialog.open()
+
+                    Dialog {
+                        id: inputDialog
+
+                        x: (parent.width - width) / 2
+                        y: (parent.height - height) / 2
+                        parent: Overlay.overlay
+
+                        focus: true
+                        modal: true
+
+                        standardButtons: Dialog.Ok | Dialog.Cancel
+
+                        onAccepted: {
+                            screenshotPath = pathInputTextField.text
+                        }
+                        onRejected: {
+                            close()
+                        }
+
+                        ColumnLayout {
+                            spacing: 10
+                            anchors.fill: parent
+
+                            Label {
+                                elide: Label.ElideRight
+                                text: qsTr("Enter desired path to save the screenshot :")
+                                Layout.fillWidth: true
+                            }
+                            TextField {
+                                id: pathInputTextField
+                                placeholderText: qsTr("/home/...")
+                                Layout.fillWidth: true
+                            }
+                        }
+                    }
+                }
 
                 Button {
 
                     id: screenshotButton
-
-                    anchors.centerIn: parent
 
                     width: buttonSize * 3 / 4
                     height: width

@@ -68,6 +68,10 @@ Item {
 
         fileName = getFileName(media.mediaplayerSourceUrl)
 
+        if (playbackControl.screenshotPath == "") {
+            playbackControl.screenshotPath = getFilePath(
+                        media.mediaplayerSourceUrl)
+        }
         view.push(screen)
     }
 
@@ -77,6 +81,7 @@ Item {
         media.mediaplayerSourceUrl = ""
 
         fileName = ""
+
         playbackControl.setVideoSliderEnable = false
 
         view.pop()
@@ -243,27 +248,25 @@ Item {
             if (media.getHasVideo) {
                 var dialogMessage = ""
                 var color = ""
+                var screenshotName = ""
                 if (media.videoOutput.grabToImage(function (result) {
-                    var captureNameAndDirectory = media.mediaplayerSourceUrl
-                            + "_" + millisToMinutesAndSeconds(
+
+                    screenshotName = fileName + "_" + millisToMinutesAndSeconds(
                                 getVideoSliderValue) + ".png"
-                    result.saveToFile(captureNameAndDirectory)
+                    var captureNameAndDirectory = "file://" + screenshotPath + "/" + screenshotName
+
+                    if (result.saveToFile(captureNameAndDirectory)) {
+                        dialogMessage = "the \"" + screenshotName + "\" file saved in \" "
+                                + screenshotPath + " \" directory"
+                        color = "#ABEBC6"
+                    } else {
+                        dialogMessage = "Failed to capture screenshot"
+                        color = subColor
+                    }
                 })) {
-
-                    var screenshotOutputName = fileName + "_" + millisToMinutesAndSeconds(
-                                getVideoSliderValue) + ".png"
-
-                    var screenshotOutputPath = getFilePath(
-                                media.mediaplayerSourceUrl)
-
-                    dialogMessage = "the \"" + screenshotOutputName + "\" file saved in \" "
-                            + screenshotOutputPath + " \" directory"
-                    color = "#ABEBC6"
-                } else {
-                    dialogMessage = "Failed to capture screenshot"
-                    color = subColor
+                    // openScreenshotDialog(dialogMessage, color)
+                    openScreenshotDialog("hello ", "red")
                 }
-                openScreenshotDialog(dialogMessage, color)
             }
         }
     }

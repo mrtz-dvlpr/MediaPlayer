@@ -1,1 +1,1 @@
-add screenshot width show dialog
+add " to screenshot capture name in dialog massage
