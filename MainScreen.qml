@@ -270,20 +270,22 @@ Item {
             }
         }
 
-        // Window {
-        //     visible: true
-        //     width: 640
-        //     height: 480
-        //     title: "Enter for Fullscreen"
-
-        //     // متغیری برای نگهداری وضعیت فعلی تمام صفحه بودن
-        Keys.onEnterPressed: {
-
-            window.toggleFullScreen()
+        Keys.onReturnPressed: {
+            clicked()
+            event.accepted = true
         }
 
-        onMaximumSizeButtonClicked: {
-            window.toggleFullScreen()
+        onToggleFullScreenButtonClicked: {
+            var fullScreenVisibility = 5
+            visibility == fullScreenVisibility ? showNormal() : showFullScreen()
+        }
+
+        onReplayButtonClicked: {
+            media.setPosition = (media.getPosition - 30000)
+        }
+
+        onForwardButtonClicked: {
+            media.setPosition = (media.getPosition + 30000)
         }
     }
 }

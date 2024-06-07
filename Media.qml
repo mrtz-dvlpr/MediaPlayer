@@ -29,7 +29,7 @@ Rectangle {
 
     property bool getPlaying: mediaplayer.playing
 
-    property VideoOutput videoOutput: videoOutput
+    property real mediaplayerPlaybackRate
 
     function play() {
         mediaplayer.play()
@@ -83,6 +83,8 @@ Rectangle {
         }
 
         onPositionChanged: mediaPlayerPositionChanged()
+
+        playbackRate: mediaplayerPlaybackRate
     }
 
     VideoOutput {

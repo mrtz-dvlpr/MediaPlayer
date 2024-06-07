@@ -46,7 +46,11 @@ Rectangle {
 
     signal screenshotButtonClicked
 
-    signal maximumSizeButtonClicked
+    signal toggleFullScreenButtonClicked
+
+    signal replayButtonClicked
+
+    signal forwardButtonClicked
 
     function openScreenshotDialog(inputMessage, messageColor) {
         dialogLabel.text = qsTr(inputMessage)
@@ -60,7 +64,6 @@ Rectangle {
     //     var seconds = ((millis % 60000) / 1000).toFixed(0)
     //     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
     // }
-
     Column {
 
         anchors.fill: parent
@@ -94,7 +97,7 @@ Rectangle {
 
                     id: videoSlider
                     width: videoSliderRow.width - positionTimeText.width
-                           - durationTiemText.width - maximumSizeScreenButton.width - 50
+                           - toggleFullScreen.width - maximumSizeScreenButton.width - 50
 
                     from: 0.0
                     value: setVideoSliderValue
@@ -110,7 +113,7 @@ Rectangle {
 
                 Text {
 
-                    id: durationTiemText
+                    id: toggleFullScreen
 
                     text: qsTr(millisToMinutesAndSeconds(setVideoSliderTo))
 
@@ -126,7 +129,7 @@ Rectangle {
                         source: "qrc:/icons/Pulsar/icons8-full-page-view-96.png"
                     }
 
-                    onClicked : maximumSizeButtonClicked()
+                    onClicked: toggleFullScreenButtonClicked()
                 }
             }
         }
@@ -209,12 +212,27 @@ Rectangle {
                 anchors.centerIn: parent
 
                 Button {
+
+                    id: repleyButton
+
+                    width: buttonSize * 8 / 10
+                    height: width
+
+                    anchors.bottom: parent.bottom
+
+                    background: Image {
+                        source: "qrc:/icons/Pulsar/icons8-replay-30-96.png"
+                    }
+
+                    onClicked: replayButtonClicked()
+                }
+
+                Button {
                     id: eject
 
                     width: buttonSize
                     height: width
 
-                    // opacity: 0.3
                     background: Image {
                         source: "qrc:/icons/Pulsar/icons8-eject-96 (1).png"
                     }
@@ -227,7 +245,6 @@ Rectangle {
                     width: buttonSize
                     height: width
 
-                    // opacity: 0.3
                     background: Image {
 
                         id: playAndPauseButtonImage
@@ -250,6 +267,20 @@ Rectangle {
 
                         stopButtonClicked()
                     }
+                }
+
+                Button {
+
+                    id: forwardButton
+
+                    width: buttonSize * 8 / 10
+                    height: width
+
+                    anchors.bottom: parent.bottom
+                    background: Image {
+                        source: "qrc:/icons/Pulsar/icons8-forward-30-96.png"
+                    }
+                    onClicked: forwardButtonClicked()
                 }
             }
 
