@@ -6,6 +6,8 @@ Item {
 
     id: mainRoot
 
+    anchors.fill: parent
+
     // property color mainColor: "#2E4053"
     // property color mainColor: "#E3FCFF"
     // property color mainColor: "#B2FFF8"
@@ -32,9 +34,9 @@ Item {
 
     property color buttonColor: "#FFFFFF"
 
-    anchors.fill: parent
-
     property double heightLength: 13 / 15
+
+    property double mediaWidth: parent.width
 
     property double mediaHeight: parent.height * heightLength
 
@@ -178,7 +180,7 @@ Item {
 
         anchors.top: parent.top
 
-        width: parent.width
+        width: mediaWidth
         height: mediaHeight
 
         initialItem: pathScreen
@@ -266,6 +268,22 @@ Item {
                     }
                 })
             }
+        }
+
+        // Window {
+        //     visible: true
+        //     width: 640
+        //     height: 480
+        //     title: "Enter for Fullscreen"
+
+        //     // متغیری برای نگهداری وضعیت فعلی تمام صفحه بودن
+        Keys.onEnterPressed: {
+
+            window.toggleFullScreen()
+        }
+
+        onMaximumSizeButtonClicked: {
+            window.toggleFullScreen()
         }
     }
 }

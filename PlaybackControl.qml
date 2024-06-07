@@ -46,6 +46,8 @@ Rectangle {
 
     signal screenshotButtonClicked
 
+    signal maximumSizeButtonClicked
+
     function openScreenshotDialog(inputMessage, messageColor) {
         dialogLabel.text = qsTr(inputMessage)
         dialogBackground.color = messageColor
@@ -58,6 +60,7 @@ Rectangle {
     //     var seconds = ((millis % 60000) / 1000).toFixed(0)
     //     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
     // }
+
     Column {
 
         anchors.fill: parent
@@ -91,7 +94,7 @@ Rectangle {
 
                     id: videoSlider
                     width: videoSliderRow.width - positionTimeText.width
-                           - durationTiemText.width - fullScreenButton.width - 50
+                           - durationTiemText.width - maximumSizeScreenButton.width - 50
 
                     from: 0.0
                     value: setVideoSliderValue
@@ -114,7 +117,7 @@ Rectangle {
                     color: subColor
                 }
                 Button {
-                    id: fullScreenButton
+                    id: maximumSizeScreenButton
 
                     width: buttonSize / 3
                     height: width
@@ -123,12 +126,7 @@ Rectangle {
                         source: "qrc:/icons/Pulsar/icons8-full-page-view-96.png"
                     }
 
-                    onClicked: {
-                        console.log("----129")
-                        console.log(screenWidth == Screen.width ? 940 : Screen.width)
-                        console.log(screenHeight == Screen.height ? 680 : Screen.heigth)
-                        console.log("----130")
-                    }
+                    onClicked : maximumSizeButtonClicked()
                 }
             }
         }
