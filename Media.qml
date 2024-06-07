@@ -7,7 +7,7 @@ Rectangle {
 
     id: root
 
-    property string mediaplayerSourceUrl
+    property string mediaPlayerSourceUrl
 
     property real audioVolume
 
@@ -15,41 +15,41 @@ Rectangle {
 
     signal mediaPlayerPositionChanged
 
-    property bool seekable: mediaplayer.seekable
+    property bool seekable: mediaPlayer.seekable
 
     property bool setMuted: false
 
     property real setPosition
 
-    property real getPosition: mediaplayer.position
+    property real getPosition: mediaPlayer.position
 
-    property real getDuration: mediaplayer.duration
+    property real getDuration: mediaPlayer.duration
 
-    property bool getHasVideo: mediaplayer.hasVideo
+    property bool getHasVideo: mediaPlayer.hasVideo
 
-    property bool getPlaying: mediaplayer.playing
+    property bool getPlaying: mediaPlayer.playing
 
-    property real mediaplayerPlaybackRate
+    property real mediaPlayerPlaybackRate: 1
 
     function play() {
-        mediaplayer.play()
+        mediaPlayer.play()
         console.log(audioOutput.muted)
         console.log(setMuted)
     }
 
     function stop() {
-        mediaplayer.stop()
+        mediaPlayer.stop()
     }
 
     function pause() {
-        mediaplayer.pause()
+        mediaPlayer.pause()
     }
 
     MediaPlayer {
 
-        id: mediaplayer
+        id: mediaPlayer
 
-        source: mediaplayerSourceUrl
+        source: mediaPlayerSourceUrl
 
         position: root.setPosition
 
@@ -84,7 +84,7 @@ Rectangle {
 
         onPositionChanged: mediaPlayerPositionChanged()
 
-        playbackRate: mediaplayerPlaybackRate
+        playbackRate: mediaPlayerPlaybackRate
     }
 
     VideoOutput {

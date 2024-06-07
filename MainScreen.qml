@@ -63,16 +63,16 @@ Item {
 
     function pushPage(screen, path) {
 
-        media.mediaplayerSourceUrl = path
+        media.mediaPlayerSourceUrl = path
         media.audioVolume = playbackControl.getAudioSliderValue
 
         playbackControl.setVideoSliderEnable = true
 
-        fileName = getFileName(media.mediaplayerSourceUrl)
+        fileName = getFileName(media.mediaPlayerSourceUrl)
 
         if (playbackControl.screenshotPath == "") {
             playbackControl.screenshotPath = getFilePath(
-                        media.mediaplayerSourceUrl)
+                        media.mediaPlayerSourceUrl)
         }
         view.push(screen)
     }
@@ -80,7 +80,7 @@ Item {
     function popPage() {
 
         media.stop()
-        media.mediaplayerSourceUrl = ""
+        media.mediaPlayerSourceUrl = ""
 
         fileName = ""
 
@@ -211,6 +211,7 @@ Item {
         // }
         onPlayAndPauseButtonClicked: {
 
+            console.log("214")
             if (media.getHasVideo) {
                 if (media.getPlaying) {
                     media.pause()
@@ -287,5 +288,9 @@ Item {
         onForwardButtonClicked: {
             media.setPosition = (media.getPosition + 30000)
         }
+
+        // onRateControlSliderValueChanged: {
+        //     console.log(rateControlSlider.value)
+        // }
     }
 }

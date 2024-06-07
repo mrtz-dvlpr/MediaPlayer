@@ -260,5 +260,6 @@
         <file>icons/Pulsar/icons8-video-stabilization-96.png</file>
         <file>icons/Pulsar/icons8-video-file-96.png</file>
         <file>icons/Pulsar/icons8-advanced-search-96.png</file>
+        <file>RateControlSlider.qml</file>
     </qresource>
 </RCC>

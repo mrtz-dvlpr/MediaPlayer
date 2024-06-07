@@ -32,6 +32,8 @@ Rectangle {
 
     property string screenshotPath
 
+    property real rateControlSliderValue: 0
+
     signal playAndPauseButtonClicked
 
     signal stopButtonClicked
@@ -51,6 +53,8 @@ Rectangle {
     signal replayButtonClicked
 
     signal forwardButtonClicked
+
+    signal retaControlSliderValueChanged
 
     function openScreenshotDialog(inputMessage, messageColor) {
         dialogLabel.text = qsTr(inputMessage)
@@ -187,7 +191,7 @@ Rectangle {
 
                     onMoved: {
                         audioSliderMoved()
-                        console.log(test)
+                        console.log(variableColor)
                     }
                     // onValueChanged: {
                     //     audioSliderValueChanged()
@@ -251,7 +255,10 @@ Rectangle {
                         source: root.playtAndPauseButtonIconPath
                     }
 
-                    onClicked: playAndPauseButtonClicked()
+                    onClicked: {
+                        playAndPauseButtonClicked()
+                        console.log("260")
+                    }
                 }
                 Button {
                     id: stop
@@ -304,10 +311,10 @@ Rectangle {
                         source: "qrc:/icons/Pulsar/icons8-open-end-wrench-96.png"
                     }
 
-                    onClicked: inputDialog.open()
+                    onClicked: settingDialog.open()
 
                     Dialog {
-                        id: inputDialog
+                        id: settingDialog
 
                         x: (parent.width - width) / 2
                         y: (parent.height - height) / 2
@@ -326,8 +333,55 @@ Rectangle {
                         }
 
                         ColumnLayout {
-                            spacing: 10
+                            spacing: 15
                             anchors.fill: parent
+
+                            Label {
+                                elide: Label.ElideRight
+                                text: qsTr("Speed :")
+                                Layout.fillWidth: true
+                            }
+
+                            Row {
+
+                                Layout.fillWidth: true
+                                spacing: 10
+
+                                RateControlSlider {
+                                    id: rateControlSlider
+
+                                    width: parent.width - 50
+
+                                    anchors.bottom: parent.bottom
+
+                                    snapMode: Slider.SnapAlways
+
+                                    from: -2
+                                    value: rateControlSliderValue
+                                    to: 2
+
+                                    stepSize: 0.25
+
+                                    onValueChanged: retaControlSliderValueChanged()
+
+                                    // Layout.fillWidth: true
+                                }
+
+                                Text {
+
+                                    id: rateSizeText
+
+                                    width: 40
+
+                                    text: qsTr("X " + rateControlSlider.value)
+                                }
+                            }
+
+                            Rectangle {
+                                Layout.fillHeight: true
+
+                                color: mainColor
+                            }
 
                             Label {
                                 elide: Label.ElideRight

@@ -4,11 +4,6 @@ import QtQuick.Controls
 Slider {
     id: control
 
-    property color variableColor: Qt.rgba(0.98,
-                                 (100 - audioSlider.value) * 82 / 10000 + 0.32,
-                                 (100 - audioSlider.value) * 82 / 10000 + 0.32,
-                                 1)
-
     background: Rectangle {
         x: control.leftPadding
         y: control.topPadding + control.availableHeight / 2 - height / 2
@@ -18,12 +13,12 @@ Slider {
         height: implicitHeight
         radius: 2
 
-        color: "#212F3C"
+        color: mainColor
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
             // color: buttonColor
-            color: variableColor
+            color: subColor
             radius: 2
         }
     }
@@ -32,13 +27,13 @@ Slider {
         x: control.leftPadding + control.visualPosition * (control.availableWidth - width)
         y: control.topPadding + control.availableHeight / 2 - height / 2
 
-        implicitWidth: 20
-        implicitHeight: 20
+        implicitWidth: 10
+        implicitHeight: implicitWidth
         radius: 13
 
         border.width: control.pressed ? width / 2 : 1
         // border.color: control.hovered ? buttonColor : control.background.color
-        border.color: control.valueChanged ? variableColor : control.background.color
+        border.color: control.valueChanged ? subColor : control.background.color
 
         Behavior on border.width {
             SmoothedAnimation {}
@@ -56,9 +51,8 @@ Slider {
 
             parent: control.handle
 
-            text: control.value.toFixed((control.stepSize + '.').split(
-                                            '.')[1].length)
-            font.pixelSize: parent.width / 2
+            text: control.value
+            font.pixelSize: parent.width
 
             delay: 100
             timeout: 0
@@ -66,8 +60,8 @@ Slider {
             background: Rectangle {
                 radius: 3
                 border.width: 1
-                opacity: 0.5
-                color: "white"
+                opacity: 0.8
+                color: subColor2
             }
         }
     }
