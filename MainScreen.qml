@@ -248,9 +248,11 @@ Item {
         onScreenshotButtonClicked: {
 
             if (media.getHasVideo) {
+
                 var screenshotName = ""
                 var messageColor
                 var messageDialog
+
                 media.videoOutput.grabToImage(function (result) {
 
                     screenshotName = fileName + "_" + millisToMinutesAndSeconds(
@@ -289,8 +291,15 @@ Item {
             media.setPosition = (media.getPosition + 30000)
         }
 
-        // onRateControlSliderValueChanged: {
-        //     console.log(rateControlSlider.value)
-        // }
+        onSettingDialogAccepted: {
+            console.log(getRateControlSliderValue)
+            media.mediaPlayerPlaybackRate = getRateControlSliderValue
+
+            if (textPathInputTextFieldDialog !== "") {
+                screenshotPath = textPathInputTextFieldDialog
+            } else {
+                screenshotPath = getFilePath(media.mediaPlayerSourceUrl)
+            }
+        }
     }
 }

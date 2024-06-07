@@ -11,10 +11,6 @@ Rectangle {
 
     property real audioVolume
 
-    signal playOrPause
-
-    signal mediaPlayerPositionChanged
-
     property bool seekable: mediaPlayer.seekable
 
     property bool setMuted: false
@@ -30,6 +26,12 @@ Rectangle {
     property bool getPlaying: mediaPlayer.playing
 
     property real mediaPlayerPlaybackRate: 1
+
+    property VideoOutput videoOutput: videoOutput
+
+    signal playOrPause
+
+    signal mediaPlayerPositionChanged
 
     function play() {
         mediaPlayer.play()

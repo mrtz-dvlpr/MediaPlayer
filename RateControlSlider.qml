@@ -47,11 +47,11 @@ Slider {
             padding: 5
 
             opacity: 0.8
-            visible: control.pressed
+            visible: true
 
             parent: control.handle
 
-            text: control.value
+            text: "X " + control.value
             font.pixelSize: parent.width
 
             delay: 100

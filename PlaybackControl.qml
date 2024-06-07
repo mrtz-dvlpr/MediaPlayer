@@ -32,7 +32,9 @@ Rectangle {
 
     property string screenshotPath
 
-    property real rateControlSliderValue: 0
+    property real getRateControlSliderValue: rateControlSlider.value
+
+    property string textPathInputTextFieldDialog:pathInputTextField.text
 
     signal playAndPauseButtonClicked
 
@@ -54,7 +56,7 @@ Rectangle {
 
     signal forwardButtonClicked
 
-    signal retaControlSliderValueChanged
+    signal settingDialogAccepted
 
     function openScreenshotDialog(inputMessage, messageColor) {
         dialogLabel.text = qsTr(inputMessage)
@@ -325,10 +327,12 @@ Rectangle {
 
                         standardButtons: Dialog.Ok | Dialog.Cancel
 
-                        onAccepted: {
-                            screenshotPath = pathInputTextField.text
-                        }
+                        onAccepted: settingDialogAccepted()
+
+
+
                         onRejected: {
+
                             close()
                         }
 
@@ -356,15 +360,11 @@ Rectangle {
 
                                     snapMode: Slider.SnapAlways
 
-                                    from: -2
-                                    value: rateControlSliderValue
+                                    from: 0.25
+                                    value: 1
                                     to: 2
 
                                     stepSize: 0.25
-
-                                    onValueChanged: retaControlSliderValueChanged()
-
-                                    // Layout.fillWidth: true
                                 }
 
                                 Text {
@@ -390,7 +390,9 @@ Rectangle {
                             }
                             TextField {
                                 id: pathInputTextField
+
                                 placeholderText: qsTr("/home/...")
+
                                 Layout.fillWidth: true
                             }
                         }
