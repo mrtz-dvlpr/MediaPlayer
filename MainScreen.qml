@@ -2,11 +2,13 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
 
-Item {
+Rectangle {
 
     id: mainRoot
 
     anchors.fill: parent
+
+    color: mainColor
 
     // property color mainColor: "#2E4053"
     // property color mainColor: "#E3FCFF"
@@ -63,24 +65,24 @@ Item {
 
     function pushPage(screen, path) {
 
-        media.mediaPlayerSourceUrl = path
-        media.audioVolume = playbackControl.getAudioSliderValue
+        mediaPlayer.mediaPlayerSourceUrl = path
+        mediaPlayer.audioVolume = playbackControl.getAudioSliderValue
 
         playbackControl.setVideoSliderEnable = true
 
-        fileName = getFileName(media.mediaPlayerSourceUrl)
+        fileName = getFileName(mediaPlayer.mediaPlayerSourceUrl)
 
         if (playbackControl.screenshotPath == "") {
             playbackControl.screenshotPath = getFilePath(
-                        media.mediaPlayerSourceUrl)
+                        mediaPlayer.mediaPlayerSourceUrl)
         }
         view.push(screen)
     }
 
     function popPage() {
 
-        media.stop()
-        media.mediaPlayerSourceUrl = ""
+        mediaPlayer.stop()
+        mediaPlayer.mediaPlayerSourceUrl = ""
 
         fileName = ""
 
@@ -93,7 +95,7 @@ Item {
 
         color: mainColor
 
-        id: media
+        id: mediaPlayer
 
         // Button {
         //     anchors.centerIn: parent
@@ -106,42 +108,41 @@ Item {
         //         console.log("capture")
         //     }
         // }
-        MouseArea {
-            width: parent.width / 3
-            height: parent.height
-            anchors.centerIn: parent
+        // MouseArea {
+        //     width: parent.width / 3
+        //     height: parent.height
+        //     anchors.centerIn: parent
 
-            onDoubleClicked: {
-                if (!media.getPlaying)
-                    media.play()
-                else
-                    media.pause()
-            }
-        }
+        //     onDoubleClicked: {
+        //         if (!mediaPlayer.getPlaying)
+        //             mediaPlayer.play()
+        //         else
+        //             mediaPlayer.pause()
+        //     }
+        // }
 
-        MouseArea {
-            width: parent.width / 3
-            height: parent.height
-            anchors.left: parent.left
-            anchors.top: parent.top
-            onDoubleClicked: {
-                media.setPosition = (media.getPosition - 5000)
-            }
-        }
+        // MouseArea {
+        //     width: parent.width / 3
+        //     height: parent.height
+        //     anchors.left: parent.left
+        //     anchors.top: parent.top
+        //     onDoubleClicked: {
+        //         mediaPlayer.setPosition = (mediaPlayer.getPosition - 5000)
+        //     }
+        // }
 
-        MouseArea {
-            width: parent.width / 3
-            height: parent.height
-            anchors.right: parent.right
-            anchors.top: parent.top
-            onDoubleClicked: {
-                media.setPosition = (media.getPosition + 5000)
-            }
-        }
-
+        // MouseArea {
+        //     width: parent.width / 3
+        //     height: parent.height
+        //     anchors.right: parent.right
+        //     anchors.top: parent.top
+        //     onDoubleClicked: {
+        //         mediaPlayer.setPosition = (mediaPlayer.getPosition + 5000)
+        //     }
+        // }
         onPlayOrPause: {
-            if (media.getHasVideo) {
-                if (media.getPlaying) {
+            if (mediaPlayer.getHasVideo) {
+                if (mediaPlayer.getPlaying) {
                     playbackControl.playtAndPauseButtonIconPath
                             = "qrc:/icons/Pulsar/icons8-pause-button-96.png"
                 } else {
@@ -156,7 +157,7 @@ Item {
         id: fileDialog
         title: "Select a Video File"
         onAccepted: {
-            pushPage(media, selectedFile)
+            pushPage(mediaPlayer, selectedFile)
         }
         nameFilters: ["Video Files (*.mov *.mp4 *.m4v
 *.mpeg *.mpg *.3gp *.3g2 *.avi *.dv)", "All Files (*)"]
@@ -170,7 +171,7 @@ Item {
         onMouseAreaClicked: fileDialog.open()
 
         onDropAreaDropped: {
-            pushPage(media, dropAreaDropUlr)
+            pushPage(mediaPlayer, dropAreaDropUlr)
         }
     }
 
@@ -212,48 +213,48 @@ Item {
         onPlayAndPauseButtonClicked: {
 
             console.log("214")
-            if (media.getHasVideo) {
-                if (media.getPlaying) {
-                    media.pause()
+            if (mediaPlayer.getHasVideo) {
+                if (mediaPlayer.getPlaying) {
+                    mediaPlayer.pause()
                 } else {
-                    media.play()
+                    mediaPlayer.play()
                 }
             }
         }
 
-        setVideoSliderTo: media.getHasVideo ? media.getDuration : 0
+        setVideoSliderTo: mediaPlayer.getHasVideo ? mediaPlayer.getDuration : 0
 
-        onStopButtonClicked: media.stop()
+        onStopButtonClicked: mediaPlayer.stop()
 
         onEjectButtonClicked: {
             popPage()
         }
 
         onVideoSliderMoved: {
-            media.setPosition = getVideoSliderValue
+            mediaPlayer.setPosition = getVideoSliderValue
         }
 
-        setVideoSliderValue: media.getPosition
+        setVideoSliderValue: mediaPlayer.getPosition
 
         onAudioSliderMoved: {
-            media.audioVolume = getAudioSliderValue
+            mediaPlayer.audioVolume = getAudioSliderValue
         }
 
-        audioMuteButtonSource: media.setMuted ? "qrc:/icons/Pulsar/icons8-mute-96.png" : "qrc:/icons/Pulsar/icons8-voice-96.png"
+        audioMuteButtonSource: mediaPlayer.setMuted ? "qrc:/icons/Pulsar/icons8-mute-96.png" : "qrc:/icons/Pulsar/icons8-voice-96.png"
 
         onMuteButtonClicked: {
-            media.setMuted = !media.setMuted
+            mediaPlayer.setMuted = !mediaPlayer.setMuted
         }
 
         onScreenshotButtonClicked: {
 
-            if (media.getHasVideo) {
+            if (mediaPlayer.getHasVideo) {
 
                 var screenshotName = ""
                 var messageColor
                 var messageDialog
 
-                media.videoOutput.grabToImage(function (result) {
+                mediaPlayer.videoOutput.grabToImage(function (result) {
 
                     screenshotName = fileName + "_" + millisToMinutesAndSeconds(
                                 getVideoSliderValue) + ".png"
@@ -284,22 +285,30 @@ Item {
         }
 
         onReplayButtonClicked: {
-            media.setPosition = (media.getPosition - 30000)
+            mediaPlayer.setPosition = (mediaPlayer.getPosition - 30000)
         }
 
         onForwardButtonClicked: {
-            media.setPosition = (media.getPosition + 30000)
+            mediaPlayer.setPosition = (mediaPlayer.getPosition + 30000)
         }
 
         onSettingDialogAccepted: {
             console.log(getRateControlSliderValue)
-            media.mediaPlayerPlaybackRate = getRateControlSliderValue
+            mediaPlayer.mediaPlayerPlaybackRate = getRateControlSliderValue
 
             if (textPathInputTextFieldDialog !== "") {
                 screenshotPath = textPathInputTextFieldDialog
             } else {
-                screenshotPath = getFilePath(media.mediaPlayerSourceUrl)
+                screenshotPath = getFilePath(mediaPlayer.mediaPlayerSourceUrl)
             }
+        }
+
+        onRotateLeftButtonClicked: {
+            mediaPlayer.rotationDegrees -= 90
+        }
+
+        onRotateRightButtonClicked: {
+            mediaPlayer.rotationDegrees += 90
         }
     }
 }

@@ -34,7 +34,7 @@ Rectangle {
 
     property real getRateControlSliderValue: rateControlSlider.value
 
-    property string textPathInputTextFieldDialog:pathInputTextField.text
+    property string textPathInputTextFieldDialog: pathInputTextField.text
 
     signal playAndPauseButtonClicked
 
@@ -57,6 +57,10 @@ Rectangle {
     signal forwardButtonClicked
 
     signal settingDialogAccepted
+
+    signal rotateLeftButtonClicked
+
+    signal rotateRightButtonClicked
 
     function openScreenshotDialog(inputMessage, messageColor) {
         dialogLabel.text = qsTr(inputMessage)
@@ -240,7 +244,7 @@ Rectangle {
                     height: width
 
                     background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-eject-96 (1).png"
+                        source: "qrc:/icons/Pulsar/icons8-insert-button-96 (1).png"
                     }
                     onClicked: ejectButtonClicked()
                 }
@@ -329,8 +333,6 @@ Rectangle {
 
                         onAccepted: settingDialogAccepted()
 
-
-
                         onRejected: {
 
                             close()
@@ -339,7 +341,35 @@ Rectangle {
                         ColumnLayout {
                             spacing: 15
                             anchors.fill: parent
+                            Label {
+                                elide: Label.ElideRight
+                                text: qsTr("Rotate :")
+                                Layout.fillWidth: true
+                            }
 
+                            Row {
+
+                                spacing: 50
+
+                                Button {
+                                    id: rotateLeftButton
+                                    width: buttonSize
+                                    height: width
+                                    background: Image {
+                                        source: "qrc:/icons/Pulsar/icons8-rotate-left-96 (1).png"
+                                    }
+                                    onClicked: rotateLeftButtonClicked()
+                                }
+                                Button {
+                                    id: rotateRightButton
+                                    width: buttonSize
+                                    height: width
+                                    background: Image {
+                                        source: "qrc:/icons/Pulsar/icons8-rotate-right-96 (1).png"
+                                    }
+                                    onClicked: rotateRightButtonClicked()
+                                }
+                            }
                             Label {
                                 elide: Label.ElideRight
                                 text: qsTr("Speed :")
@@ -410,12 +440,12 @@ Rectangle {
                         source: "qrc:/icons/Pulsar/icons8-video-stabilization-96.png"
                     }
 
-                    property bool test: false
+                    property bool playing: false
 
                     onClicked: {
                         screenshotButtonClicked()
-                        screenshotButton.test = true
-                        dialogTimer.start()
+                        screenshotButton.playing = true
+                        screenshotDialogTimer.start()
                     }
 
                     Dialog {
@@ -437,18 +467,18 @@ Rectangle {
                         }
 
                         Timer {
-                            id: dialogTimer
+                            id: screenshotDialogTimer
 
                             repeat: false
 
-                            running: screenshotButton.test
+                            running: screenshotButton.playing
 
                             interval: 2000
 
                             onTriggered: {
                                 screenshotMessage.close()
                                 console.log("361")
-                                screenshotButton.test = false
+                                screenshotButton.playing = false
                             }
                         }
                     }

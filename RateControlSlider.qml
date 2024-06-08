@@ -47,7 +47,7 @@ Slider {
             padding: 5
 
             opacity: 0.8
-            visible: true
+            visible: control.pressed
 
             parent: control.handle
 

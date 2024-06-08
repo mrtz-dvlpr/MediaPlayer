@@ -25,6 +25,8 @@ Rectangle {
 
     property bool getPlaying: mediaPlayer.playing
 
+    property int rotationDegrees
+
     property real mediaPlayerPlaybackRate: 1
 
     property VideoOutput videoOutput: videoOutput
@@ -46,6 +48,8 @@ Rectangle {
     function pause() {
         mediaPlayer.pause()
     }
+
+    rotation: rotationDegrees
 
     MediaPlayer {
 
@@ -89,8 +93,98 @@ Rectangle {
         playbackRate: mediaPlayerPlaybackRate
     }
 
+    property real minScale: 1.0
+    property real maxScale: 5.0
+    property real currentScale: 1.0
+
     VideoOutput {
         id: videoOutput
         anchors.fill: parent
+
+        scale: currentScale
+
+        transform: [
+            Scale {
+                id: zoomScale
+            }
+            // ,
+            // Translate {
+            //     id: zoomTranslate
+            // }
+        ]
+
+        focus: true
+
+        property real zoomSize: 1
+
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.AllButtons
+
+            onWheel: {
+                videoOutput.zoomSize += wheel.angleDelta.y
+                        > 0 ? (videoOutput.zoomSize
+                               < 2 ? 0.1 : 0) : (videoOutput.zoomSize > -2 ? -0.1 : 0)
+            }
+
+            onDoubleClicked: {
+
+                if (zoomScale.xScale + videoOutput.zoomSize > 1
+                        || zoomScale.yScale + videoOutput.zoomSize > 1) {
+
+                    zoomScale.origin.x = mouse.x
+                    zoomScale.origin.y = mouse.y
+                    zoomScale.xScale += videoOutput.zoomSize
+                    zoomScale.yScale += videoOutput.zoomSize
+                } else {
+                    zoomScale.xScale = 1
+                    zoomScale.yScale = 1
+                }
+            }
+        }
+
+        Keys.onEscapePressed: {
+            zoomScale.yScale = 1
+        }
     }
-}
+} // MouseArea {//     anchors.fill: parent//     onWheel: {//         var mouseX = mouse.x//         var mouseY = mouse.y//         var newScale = currentScale//         if (wheel.angleDelta.y > 0) {
+//             newScale *= 1.1
+//         } else {
+//             newScale /= 1.1
+//         }
+//         newScale = Math.max(minScale, Math.min(newScale, maxScale))
+//         currentScale = newScale
+//         videoOutput.scale = currentScale
+//         videoOutput.transformOrigin = Qt.point(mouseX, mouseY)
+//     }
+// }
+
+//        MouseArea {
+//            anchors.fill: parent
+//            onWheel: {
+//                if (wheel.angleDelta.y > 0) {
+//                    videoOutput.scale *= 1.1
+//                } else {
+//                    videoOutput.scale /= 1.1
+//                }
+//            }
+//        }
+
+// MouseArea {
+//     id: mouseArea
+//     anchors.fill: parent
+
+//     onWheel: {
+//         zoomScale.origin.x = mouseArea.mouseX
+//         zoomScale.origin.y = mouseArea.mouseY
+
+//         zoomScale.xScale *= wheel.angleDelta.y > 0 ? 1.1 : 0.909090
+//         zoomScale.yScale *= wheel.angleDelta.y > 0 ? 1.1 : 0.909090
+//     }
+
+//     onDoubleClicked: {
+//         zoomScale.xScale = 1
+//         zoomScale.yScale = 1
+//     }
+// }
+

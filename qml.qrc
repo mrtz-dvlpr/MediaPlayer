@@ -261,5 +261,13 @@
         <file>icons/Pulsar/icons8-video-file-96.png</file>
         <file>icons/Pulsar/icons8-advanced-search-96.png</file>
         <file>RateControlSlider.qml</file>
+        <file>icons/Pulsar/icons8-insert-button-96.png</file>
+        <file>icons/Pulsar/icons8-insert-button-96 (1).png</file>
+        <file>icons/Pulsar/icons8-rotate-right-96.png</file>
+        <file>icons/Pulsar/icons8-rotate-left-96.png</file>
+        <file>icons/Pulsar/icons8-rotate-right-96 (2).png</file>
+        <file>icons/Pulsar/icons8-rotate-right-96 (1).png</file>
+        <file>icons/Pulsar/icons8-rotate-left-96 (2).png</file>
+        <file>icons/Pulsar/icons8-rotate-left-96 (1).png</file>
     </qresource>
 </RCC>

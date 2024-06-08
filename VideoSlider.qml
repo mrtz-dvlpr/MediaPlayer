@@ -3,7 +3,7 @@ import QtQuick.Controls
 
 Slider {
     id: control
-        background: Rectangle {
+    background: Rectangle {
         x: control.leftPadding
         y: control.topPadding + control.availableHeight / 2 - height / 2
         implicitWidth: 200
@@ -16,6 +16,7 @@ Slider {
 
         // color: "#2C3E50"
         Rectangle {
+
             width: control.visualPosition * parent.width
             height: parent.height
             // color: "#E74C3C"
