@@ -29,7 +29,13 @@ Rectangle {
 
     property real mediaPlayerPlaybackRate: 1
 
+    property real getMediaPlayerPlaybackRate: mediaPlayer.playbackRate
+
     property VideoOutput videoOutput: videoOutput
+
+    property real testX: 1
+
+    property real testY: 1
 
     signal playOrPause
 
@@ -106,50 +112,74 @@ Rectangle {
         transform: [
             Scale {
                 id: zoomScale
+                origin.x: mouseArea.mouseX
+                origin.y: mouseArea.mouseY
+
+                xScale: testX
+                yScale: testY
             }
             // ,
             // Translate {
             //     id: zoomTranslate
             // }
         ]
+        MouseArea {
+            id: mouseArea
+            anchors.fill: parent
+        }
 
         focus: true
 
-        property real zoomSize: 1
+        // property real zoomSize: 1
 
-        MouseArea {
-            anchors.fill: parent
-            acceptedButtons: Qt.AllButtons
+        // MouseArea {
+        //     anchors.fill: parent
+        //     acceptedButtons: Qt.AllButtons
 
-            onWheel: {
-                videoOutput.zoomSize += wheel.angleDelta.y
-                        > 0 ? (videoOutput.zoomSize
-                               < 2 ? 0.1 : 0) : (videoOutput.zoomSize > -2 ? -0.1 : 0)
-            }
+        //     onDoubleClicked: {
 
-            onDoubleClicked: {
+        // if (zoomScale.xScale + videoOutput.zoomSize > 1
+        //         || zoomScale.yScale + videoOutput.zoomSize > 1) {
 
-                if (zoomScale.xScale + videoOutput.zoomSize > 1
-                        || zoomScale.yScale + videoOutput.zoomSize > 1) {
-
-                    zoomScale.origin.x = mouse.x
-                    zoomScale.origin.y = mouse.y
-                    zoomScale.xScale += videoOutput.zoomSize
-                    zoomScale.yScale += videoOutput.zoomSize
-                } else {
-                    zoomScale.xScale = 1
-                    zoomScale.yScale = 1
-                }
-            }
-        }
-
-        Keys.onEscapePressed: {
-            zoomScale.yScale = 1
-        }
+        //     zoomScale.origin.x = mouse.x
+        //     zoomScale.origin.y = mouse.y
+        //     zoomScale.xScale += videoOutput.zoomSize
+        //     zoomScale.yScale += videoOutput.zoomSize
+        // } else {
+        //     zoomScale.xScale = 1
+        //     zoomScale.yScale = 1
+        // }
     }
-} // MouseArea {//     anchors.fill: parent//     onWheel: {//         var mouseX = mouse.x//         var mouseY = mouse.y//         var newScale = currentScale//         if (wheel.angleDelta.y > 0) {
-//             newScale *= 1.1
-//         } else {
+    // }
+
+    // MouseArea {
+    //     anchors.fill: parent
+    //     acceptedButtons: Qt.AllButtons
+
+    //     onWheel: {
+    //         videoOutput.zoomSize += wheel.angleDelta.y
+    //                 > 0 ? (videoOutput.zoomSize
+    //                        < 2 ? 0.1 : 0) : (videoOutput.zoomSize > -2 ? -0.1 : 0)
+    //     }
+
+    //     onDoubleClicked: {
+
+    //         if (zoomScale.xScale + videoOutput.zoomSize > 1
+    //                 || zoomScale.yScale + videoOutput.zoomSize > 1) {
+
+    //             zoomScale.origin.x = mouse.x
+    //             zoomScale.origin.y = mouse.y
+    //             zoomScale.xScale += videoOutput.zoomSize
+    //             zoomScale.yScale += videoOutput.zoomSize
+    //         } else {
+    //             zoomScale.xScale = 1
+    //             zoomScale.yScale = 1
+    //         }
+    //     }
+    // }
+
+    // }
+} // MouseArea {//     anchors.fill: parent//     onWheel: {//         var mouseX = mouse.x//         var mouseY = mouse.y//         var newScale = currentScale//         if (wheel.angleDelta.y > 0) {//             newScale *= 1.1//         } else {
 //             newScale /= 1.1
 //         }
 //         newScale = Math.max(minScale, Math.min(newScale, maxScale))

@@ -269,5 +269,45 @@
         <file>icons/Pulsar/icons8-rotate-right-96 (1).png</file>
         <file>icons/Pulsar/icons8-rotate-left-96 (2).png</file>
         <file>icons/Pulsar/icons8-rotate-left-96 (1).png</file>
+        <file>icons/Pulsar/icons8-zoom-out-96(1).png</file>
+        <file>icons/Pulsar/icons8-zoom-out-96.png</file>
+        <file>icons/Pulsar/icons8-zoom-in-96(1).png</file>
+        <file>icons/Pulsar/icons8-zoom-in-96.png</file>
+        <file>icons/Pulsar/icons8-x2-96(1).png</file>
+        <file>icons/Pulsar/icons8-x2-96.png</file>
+        <file>icons/Pulsar/icons8-toolbox-96(1).png</file>
+        <file>icons/Pulsar/icons8-toolbox-96.png</file>
+        <file>icons/Pulsar/icons8-settings-96(1).png</file>
+        <file>icons/Pulsar/icons8-settings-96.png</file>
+        <file>icons/Pulsar/icons8-screenshot-96(1).png</file>
+        <file>icons/Pulsar/icons8-screenshot-96.png</file>
+        <file>icons/Pulsar/icons8-rewind-button-round-96 (3).png</file>
+        <file>icons/Pulsar/icons8-rewind-button-round-96 (2).png</file>
+        <file>icons/Pulsar/icons8-rewind-button-round-96 (1).png</file>
+        <file>icons/Pulsar/icons8-resize-96(1).png</file>
+        <file>icons/Pulsar/icons8-resize-96.png</file>
+        <file>icons/Pulsar/icons8-puzzle-96(1).png</file>
+        <file>icons/Pulsar/icons8-puzzle-96.png</file>
+        <file>icons/Pulsar/icons8-private-96.png</file>
+        <file>icons/Pulsar/icons8-page-size-96(1).png</file>
+        <file>icons/Pulsar/icons8-page-size-96.png</file>
+        <file>icons/Pulsar/icons8-original-size-96(1).png</file>
+        <file>icons/Pulsar/icons8-original-size-96.png</file>
+        <file>icons/Pulsar/icons8-open-document-96(1).png</file>
+        <file>icons/Pulsar/icons8-open-document-96.png</file>
+        <file>icons/Pulsar/icons8-insert-page-96(1).png</file>
+        <file>icons/Pulsar/icons8-insert-page-96.png</file>
+        <file>icons/Pulsar/icons8-info-96(1).png</file>
+        <file>icons/Pulsar/icons8-info-96.png</file>
+        <file>icons/Pulsar/icons8-folder-96(1).png</file>
+        <file>icons/Pulsar/icons8-folder-96.png</file>
+        <file>icons/Pulsar/icons8-checkmark-96.png</file>
+        <file>icons/Pulsar/icons8-all-out-96(2).png</file>
+        <file>icons/Pulsar/icons8-all-out-96(1).png</file>
+        <file>icons/Pulsar/icons8-all-out-96.png</file>
+        <file>icons/Pulsar/icons8-add-96.png</file>
+        <file>icons/Pulsar/icons8-insert-button-96 (2).png</file>
+        <file>icons/Pulsar/icons8-pause-button-96 (1).png</file>
+        <file>icons/Pulsar/icons8-stop-circled-96 (1).png</file>
     </qresource>
 </RCC>

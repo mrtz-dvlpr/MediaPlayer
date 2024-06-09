@@ -144,7 +144,7 @@ Rectangle {
             if (mediaPlayer.getHasVideo) {
                 if (mediaPlayer.getPlaying) {
                     playbackControl.playtAndPauseButtonIconPath
-                            = "qrc:/icons/Pulsar/icons8-pause-button-96.png"
+                            = "qrc:/icons/Pulsar/icons8-pause-button-96 (1).png"
                 } else {
                     playbackControl.playtAndPauseButtonIconPath
                             = "qrc:/icons/Pulsar/icons8-circled-play-96.png"
@@ -274,14 +274,12 @@ Rectangle {
             }
         }
 
-        Keys.onReturnPressed: {
-            clicked()
-            event.accepted = true
-        }
-
         onToggleFullScreenButtonClicked: {
             var fullScreenVisibility = 5
             visibility == fullScreenVisibility ? showNormal() : showFullScreen()
+
+            toggleFullScreenButtonImageSource = visibility
+                    === 5 ? "qrc:/icons/Pulsar/icons8-resize-96(1).png" : "qrc:/icons/Pulsar/icons8-resize-96.png"
         }
 
         onReplayButtonClicked: {
@@ -309,6 +307,35 @@ Rectangle {
 
         onRotateRightButtonClicked: {
             mediaPlayer.rotationDegrees += 90
+        }
+
+        onX2ButtonClicked: {
+            mediaPlayer.mediaPlayerPlaybackRate = mediaPlayer.mediaPlayerPlaybackRate === 2 ? 1 : 2
+            x2ButtonImageSource = mediaPlayer.getMediaPlayerPlaybackRate
+                    === 2 ? "qrc:/icons/Pulsar/icons8-x2-96(1).png" : "qrc:/icons/Pulsar/icons8-x2-96.png"
+        }
+        onZoomOutButtonClicked: {
+            if (mediaPlayer.testX > 1 && mediaPlayer.testY > 1) {
+                mediaPlayer.testX -= 1
+                mediaPlayer.testY -= 1
+            } else {
+                mediaPlayer.testX = 1
+                mediaPlayer.testY = 1
+            }
+        }
+        onZoomInButtonClicked: {
+            mediaPlayer.testX += 1
+            mediaPlayer.testY += 1
+        }
+
+        onOrginalScreenSizeButtonClicked: {
+            mediaPlayer.testX = 1
+            mediaPlayer.testY = 1
+        }
+
+        Component.onCompleted: {
+            x2ButtonImageSource = mediaPlayer.getMediaPlayerPlaybackRate
+                    === 2 ? "qrc:/icons/Pulsar/icons8-x2-96(1).png" : "qrc:/icons/Pulsar/icons8-x2-96.png"
         }
     }
 }

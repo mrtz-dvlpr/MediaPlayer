@@ -36,6 +36,10 @@ Rectangle {
 
     property string textPathInputTextFieldDialog: pathInputTextField.text
 
+    property string toggleFullScreenButtonImageSource: "qrc:/icons/Pulsar/icons8-resize-96.png"
+
+    property string x2ButtonImageSource
+
     signal playAndPauseButtonClicked
 
     signal stopButtonClicked
@@ -61,6 +65,14 @@ Rectangle {
     signal rotateLeftButtonClicked
 
     signal rotateRightButtonClicked
+
+    signal x2ButtonClicked
+
+    signal zoomOutButtonClicked
+
+    signal zoomInButtonClicked
+
+    signal orginalScreenSizeButtonClicked
 
     function openScreenshotDialog(inputMessage, messageColor) {
         dialogLabel.text = qsTr(inputMessage)
@@ -107,7 +119,7 @@ Rectangle {
 
                     id: videoSlider
                     width: videoSliderRow.width - positionTimeText.width
-                           - toggleFullScreen.width - maximumSizeScreenButton.width - 50
+                           - toggleFullScreen.width - x2Button.width - 50
 
                     from: 0.0
                     value: setVideoSliderValue
@@ -129,28 +141,31 @@ Rectangle {
 
                     color: subColor
                 }
-                Button {
-                    id: maximumSizeScreenButton
 
-                    width: buttonSize / 3
+                Button {
+                    id: x2Button
+
+                    width: buttonSize * 3 / 9
                     height: width
 
                     background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-full-page-view-96.png"
+                        source: x2ButtonImageSource
                     }
 
-                    onClicked: toggleFullScreenButtonClicked()
+                    onClicked: x2ButtonClicked()
                 }
             }
         }
 
         Item {
-            id: mainItem
+            id: leftItems
 
             width: parent.width
             height: parent.height
 
             Row {
+
+                id: audioControlRow
 
                 x: parent.width / 30
 
@@ -188,7 +203,7 @@ Rectangle {
 
                     stepSize: 5
 
-                    width: mainItem.width / 10
+                    width: leftItems.width / 10
                     anchors.verticalCenter: parent.verticalCenter
 
                     from: 0
@@ -219,6 +234,7 @@ Rectangle {
             }
 
             Row {
+                id: controlRow
                 anchors.centerIn: parent
 
                 Button {
@@ -231,7 +247,7 @@ Rectangle {
                     anchors.bottom: parent.bottom
 
                     background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-replay-30-96.png"
+                        source: repleyButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96.png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (3).png"
                     }
 
                     onClicked: replayButtonClicked()
@@ -244,7 +260,7 @@ Rectangle {
                     height: width
 
                     background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-insert-button-96 (1).png"
+                        source: eject.pressed ? "qrc:/icons/Pulsar/icons8-insert-button-96 (2).png" : "qrc:/icons/Pulsar/icons8-insert-button-96 (1).png"
                     }
                     onClicked: ejectButtonClicked()
                 }
@@ -274,7 +290,7 @@ Rectangle {
 
                     background: Image {
 
-                        source: "qrc:/icons/Pulsar/icons8-stop-circled-96.png"
+                        source: stop.pressed ? "qrc:/icons/Pulsar/icons8-stop-circled-96 (1).png" : "qrc:/icons/Pulsar/icons8-stop-circled-96.png"
                     }
                     onClicked: {
 
@@ -291,7 +307,7 @@ Rectangle {
 
                     anchors.bottom: parent.bottom
                     background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-forward-30-96.png"
+                        source: forwardButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (2).png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (1).png"
                     }
                     onClicked: forwardButtonClicked()
                 }
@@ -299,9 +315,9 @@ Rectangle {
 
             Row {
 
-                id: rightItem
+                id: toolboxRow
 
-                x: parent.width * 8 / 9
+                x: parent.width - width - 15
 
                 anchors.verticalCenter: parent.verticalCenter
 
@@ -310,14 +326,16 @@ Rectangle {
                 Button {
                     id: settingButton
 
-                    width: buttonSize * 3 / 5
+                    width: buttonSize * 4 / 5
                     height: width
 
                     background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-open-end-wrench-96.png"
+                        source: settingDialog.opened ? "qrc:/icons/Pulsar/icons8-settings-96.png" : "qrc:/icons/Pulsar/icons8-settings-96(1).png"
                     }
 
-                    onClicked: settingDialog.open()
+                    onClicked: {
+                        settingDialog.open()
+                    }
 
                     Dialog {
                         id: settingDialog
@@ -334,7 +352,6 @@ Rectangle {
                         onAccepted: settingDialogAccepted()
 
                         onRejected: {
-
                             close()
                         }
 
@@ -437,7 +454,7 @@ Rectangle {
                     height: width
 
                     background: Image {
-                        source: "qrc:/icons/Pulsar/icons8-video-stabilization-96.png"
+                        source: screenshotButton.pressed ? "qrc:/icons/Pulsar/icons8-screenshot-96.png" : "qrc:/icons/Pulsar/icons8-screenshot-96(1).png"
                     }
 
                     property bool playing: false
@@ -452,7 +469,7 @@ Rectangle {
 
                         id: screenshotMessage
 
-                        x: -rightItem.x + (mainRoot.width - width) / 2
+                        x: -toolboxRow.x + (mainRoot.width - width) / 2
                         y: -(mainRoot.height) / 6
 
                         opacity: 0.5
@@ -482,6 +499,57 @@ Rectangle {
                             }
                         }
                     }
+                }
+                Button {
+                    id: toggleFullScreenButton
+
+                    width: buttonSize * 3 / 4
+                    height: width
+
+                    background: Image {
+                        source: toggleFullScreenButtonImageSource
+                    }
+
+                    onClicked: toggleFullScreenButtonClicked()
+                }
+
+                Button {
+                    id: zoomInButton
+
+                    width: buttonSize * 3.5 / 4
+                    height: width
+
+                    background: Image {
+                        source: zoomInButton.pressed ? "qrc:/icons/Pulsar/icons8-zoom-in-96.png" : "qrc:/icons/Pulsar/icons8-zoom-in-96(1).png"
+                    }
+
+                    onClicked: zoomInButtonClicked()
+                }
+
+                Button {
+                    id: orginalScreenSizeButton
+
+                    width: buttonSize * 3 / 4
+                    height: width
+
+                    background: Image {
+                        source: orginalScreenSizeButton.pressed ? "qrc:/icons/Pulsar/icons8-original-size-96.png" : "qrc:/icons/Pulsar/icons8-original-size-96(1).png"
+                    }
+
+                    onClicked: orginalScreenSizeButtonClicked()
+                }
+
+                Button {
+                    id: zoomOutButton
+
+                    width: buttonSize * 3 / 4.5
+                    height: width
+
+                    background: Image {
+                        source: zoomOutButton.pressed ? "qrc:/icons/Pulsar/icons8-zoom-out-96(1).png" : "qrc:/icons/Pulsar/icons8-zoom-out-96.png"
+                    }
+
+                    onClicked: zoomOutButtonClicked()
                 }
             }
         }
