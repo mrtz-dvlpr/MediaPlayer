@@ -26,7 +26,6 @@ Rectangle {
 
         MouseArea {
             anchors.fill: parent
-            // onClicked:pathButtonClicked()
             onClicked: mouseAreaClicked()
         }
 
@@ -40,14 +39,10 @@ Rectangle {
                 width: pathBox.width / 5.5
                 height: pathBox.height / 3
                 source: "qrc:/icons/Pulsar/icons8-open-view-in-new-tab-96 (1).png"
-                // source: "qrc:/icons/Pulsar/icons8-video-file-96.png"
             }
             Text {
-
-                // anchors.centerIn: parent
-                // width: parent.width
                 id: name
-                text: "<font color=\"#ABB2B9\">click </font><font color=\"#FA5252\">here</font> <font color=\"#ABB2B9\">to select video file or drop here </font>"
+                text: "<font color=\"#ABB2B9\">click </font><font color=\"#FA5252\">here (Ctrl+O)</font> <font color=\"#ABB2B9\">to select video file </font></hr><font color=\"#ABB2B9\"> or drop here </font>"
             }
         }
     }
@@ -82,8 +77,6 @@ Rectangle {
 
                 dropAreaDropUlr = str
                 dropAreaDropped()
-            } else {
-                console.log("Unsupported file type.")
             }
         }
 

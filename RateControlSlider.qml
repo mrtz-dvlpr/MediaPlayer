@@ -17,7 +17,6 @@ Slider {
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            // color: buttonColor
             color: subColor
             radius: 2
         }
@@ -32,7 +31,6 @@ Slider {
         radius: 13
 
         border.width: control.pressed ? width / 2 : 1
-        // border.color: control.hovered ? buttonColor : control.background.color
         border.color: control.valueChanged ? subColor : control.background.color
 
         Behavior on border.width {

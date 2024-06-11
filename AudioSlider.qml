@@ -4,10 +4,11 @@ import QtQuick.Controls
 Slider {
     id: control
 
-    property color variableColor: Qt.rgba(0.98,
-                                 (100 - audioSlider.value) * 82 / 10000 + 0.32,
-                                 (100 - audioSlider.value) * 82 / 10000 + 0.32,
-                                 1)
+    property color variableColor: Qt.rgba(
+                                      0.98,
+                                      (100 - audioSlider.value) * 82 / 10000 + 0.32,
+                                      (100 - audioSlider.value) * 82 / 10000 + 0.32,
+                                      1)
 
     background: Rectangle {
         x: control.leftPadding
@@ -37,7 +38,6 @@ Slider {
         radius: 13
 
         border.width: control.pressed ? width / 2 : 1
-        // border.color: control.hovered ? buttonColor : control.background.color
         border.color: control.valueChanged ? variableColor : control.background.color
 
         Behavior on border.width {

@@ -10,26 +10,8 @@ Rectangle {
 
     color: mainColor
 
-    // property color mainColor: "#2E4053"
-    // property color mainColor: "#E3FCFF"
-    // property color mainColor: "#B2FFF8"
-    // property color mainColor: "#C3F9FF"
-    // property color mainColor: "#FFDBB2"
-    // property color mainColor: "#F6F6F6"
-    // property color mainColor: "#DAE1DF"
-    // property color mainColor: "#6A9699"
-    // property color mainColor: "#548981"
-    // property color mainColor: "#34495E"
-    // property color mainColor: "#398CFD"
-    // property color mainColor: "#212F3D"
-    // property color mainColor: "#494D4C"
     property color mainColor: "#1C2833"
 
-    // property color subColor: "#33BEF0"
-    // property color subColro: "#398CFD"
-    // property color subColor: "white"
-    // property color subColor: "#E74C3C"
-    // property color subColor: "#E74C3C"
     property color subColor: "#FA5252"
 
     property color subColor2: "#ABB2B9"
@@ -91,55 +73,96 @@ Rectangle {
         view.pop()
     }
 
+    Action {
+        shortcut: "Esc"
+        onTriggered: {
+            mediaPlayer.testX = 1
+            mediaPlayer.testY = 1
+        }
+    }
+
+    Action {
+        shortcut: "Up"
+        onTriggered: {
+            if (playbackControl.getAudioSliderValue < 0.96) {
+
+                playbackControl.setAudioSliderValue += 5
+            }
+        }
+    }
+
+    Action {
+        shortcut: "Down"
+        onTriggered: {
+            if (playbackControl.getAudioSliderValue > 0.04) {
+                playbackControl.setAudioSliderValue -= 5
+            }
+        }
+    }
+
+    Action {
+        shortcut: "Left"
+        onTriggered: {
+            mediaPlayer.setPosition = (mediaPlayer.getPosition - 1000)
+        }
+    }
+
+    Action {
+        shortcut: "Right"
+        onTriggered: {
+            mediaPlayer.setPosition = (mediaPlayer.getPosition + 1000)
+        }
+    }
+
+    Action {
+        shortcut: "Space"
+        onTriggered: {
+            playbackControl.playAndPauseButtonClicked()
+        }
+    }
+
+    Action {
+        shortcut: "Ctrl+S"
+        onTriggered: {
+            playbackControl.screenshotButtonClicked()
+        }
+    }
+
+    Action {
+        shortcut: "Ctrl+O"
+        onTriggered: {
+            if (!mediaPlayer.getHasVideo)
+                fileDialog.open()
+        }
+    }
+
+    Action {
+        shortcut: "Backspace"
+        onTriggered: {
+            playbackControl.ejectButtonClicked()
+        }
+    }
+
+    Action {
+        shortcut: "Ctrl+Shift+Esc"
+        onTriggered: {
+            window.close()
+        }
+    }
+
+    Action {
+        shortcut: "Return"
+        onTriggered: {
+            playbackControl.toggleFullScreenButtonClicked()
+        }
+    }
+
     Media {
 
         color: mainColor
 
         id: mediaPlayer
 
-        // Button {
-        //     anchors.centerIn: parent
-        //     text: "Capture Frame"
-        //     onClicked: {
-        //         videoOutput.grabToImage(function (result) {
-        //             result.saveToFile(
-        //                         "file:///home/morteza/Desktop/capturedFrame.png")
-        //         })
-        //         console.log("capture")
-        //     }
-        // }
-        // MouseArea {
-        //     width: parent.width / 3
-        //     height: parent.height
-        //     anchors.centerIn: parent
-
-        //     onDoubleClicked: {
-        //         if (!mediaPlayer.getPlaying)
-        //             mediaPlayer.play()
-        //         else
-        //             mediaPlayer.pause()
-        //     }
-        // }
-
-        // MouseArea {
-        //     width: parent.width / 3
-        //     height: parent.height
-        //     anchors.left: parent.left
-        //     anchors.top: parent.top
-        //     onDoubleClicked: {
-        //         mediaPlayer.setPosition = (mediaPlayer.getPosition - 5000)
-        //     }
-        // }
-
-        // MouseArea {
-        //     width: parent.width / 3
-        //     height: parent.height
-        //     anchors.right: parent.right
-        //     anchors.top: parent.top
-        //     onDoubleClicked: {
-        //         mediaPlayer.setPosition = (mediaPlayer.getPosition + 5000)
-        //     }
-        // }
         onPlayOrPause: {
             if (mediaPlayer.getHasVideo) {
                 if (mediaPlayer.getPlaying) {
@@ -159,8 +182,7 @@ Rectangle {
         onAccepted: {
             pushPage(mediaPlayer, selectedFile)
         }
-        nameFilters: ["Video Files (*.mov *.mp4 *.m4v
-*.mpeg *.mpg *.3gp *.3g2 *.avi *.dv)", "All Files (*)"]
+        nameFilters: ["Video Files (*.mov *.mp4 *.m4v *.mpeg *.mpg *.3gp *.3g2 *.avi *.dv)", "All Files (*)"]
     }
 
     PathScreen {
@@ -198,28 +220,11 @@ Rectangle {
 
         color: mainRoot.mainColor
 
-        // Button {
-        //     anchors.centerIn: parent
-        //     text: "Capture Frame"
-        //     onClicked: {
-        //         if (media.test.grabToImage(function (result) {
-        //             // var path = Qt.resolvedUrl("capturedFrame.png")
-        //             result.saveToFile("/home/morteza/Desktop/capturedFrame.png")
-        //         })) {
-        //             console.log("Capture attempt made")
-        //         }
-        //     }
-        // }
         onPlayAndPauseButtonClicked: {
 
-            console.log("214")
-            if (mediaPlayer.getHasVideo) {
-                if (mediaPlayer.getPlaying) {
-                    mediaPlayer.pause()
-                } else {
-                    mediaPlayer.play()
-                }
-            }
+            mediaPlayer.getHasVideo
+                    && mediaPlayer.getPlaying ? mediaPlayer.pause(
+                                                    ) : mediaPlayer.play()
         }
 
         setVideoSliderTo: mediaPlayer.getHasVideo ? mediaPlayer.getDuration : 0
@@ -236,7 +241,7 @@ Rectangle {
 
         setVideoSliderValue: mediaPlayer.getPosition
 
-        onAudioSliderMoved: {
+        onAudioSliderValueChanged: {
             mediaPlayer.audioVolume = getAudioSliderValue
         }
 
@@ -291,7 +296,6 @@ Rectangle {
         }
 
         onSettingDialogAccepted: {
-            console.log(getRateControlSliderValue)
             mediaPlayer.mediaPlayerPlaybackRate = getRateControlSliderValue
 
             if (textPathInputTextFieldDialog !== "") {
@@ -333,9 +337,7 @@ Rectangle {
             mediaPlayer.testY = 1
         }
 
-        Component.onCompleted: {
-            x2ButtonImageSource = mediaPlayer.getMediaPlayerPlaybackRate
-                    === 2 ? "qrc:/icons/Pulsar/icons8-x2-96(1).png" : "qrc:/icons/Pulsar/icons8-x2-96.png"
-        }
+        x2ButtonImageSource: mediaPlayer.getMediaPlayerPlaybackRate
+                             === 2 ? "qrc:/icons/Pulsar/icons8-x2-96(1).png" : "qrc:/icons/Pulsar/icons8-x2-96.png"
     }
 }

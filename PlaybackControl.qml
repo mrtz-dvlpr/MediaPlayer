@@ -40,6 +40,8 @@ Rectangle {
 
     property string x2ButtonImageSource
 
+    property real setAudioSliderValue: 50
+
     signal playAndPauseButtonClicked
 
     signal stopButtonClicked
@@ -50,7 +52,7 @@ Rectangle {
 
     signal muteButtonClicked
 
-    signal audioSliderMoved
+    signal audioSliderValueChanged
 
     signal screenshotButtonClicked
 
@@ -80,12 +82,6 @@ Rectangle {
         screenshotMessage.open()
     }
 
-    // function millisToMinutesAndSeconds(millis) {
-
-    //     var minutes = Math.floor(millis / 60000)
-    //     var seconds = ((millis % 60000) / 1000).toFixed(0)
-    //     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
-    // }
     Column {
 
         anchors.fill: parent
@@ -125,8 +121,7 @@ Rectangle {
                     value: setVideoSliderValue
                     to: setVideoSliderTo
 
-                    onMoved: {
-                        console.log(videoSliderRow.width)
+                    onMoved:{
                         videoSliderMoved()
                     }
 
@@ -186,18 +181,6 @@ Rectangle {
                     }
                 }
 
-                // Button {
-                //     width: buttonSize * 3 / 5
-                //     height: width
-                //     background: Image {
-                //         source: "qrc:/icons/Pulsar/icons8-low-volume-96.png"
-                //     }
-
-                //     onClicked: {
-                //         if (audioSlider.value > 4)
-                //             audioSlider.value -= 5
-                //     }
-                // }
                 AudioSlider {
                     id: audioSlider
 
@@ -207,30 +190,13 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
 
                     from: 0
-                    value: 50
+                    value: setAudioSliderValue
                     to: 100
 
-                    onMoved: {
-                        audioSliderMoved()
-                        console.log(variableColor)
+                    onValueChanged: {
+                        audioSliderValueChanged()
                     }
-                    // onValueChanged: {
-                    //     audioSliderValueChanged()
-                    // }
                 }
-
-                // Button {
-                //     width: buttonSize * 3 / 5
-                //     height: width
-                //     background: Image {
-                //         source: "qrc:/icons/Pulsar/icons8-audio-96.png"
-                //     }
-                //     onClicked: {
-                //         if (audioSlider.value < 96) {
-                //             audioSlider.value += 5
-                //         }
-                //     }
-                // }
             }
 
             Row {
@@ -279,7 +245,6 @@ Rectangle {
 
                     onClicked: {
                         playAndPauseButtonClicked()
-                        console.log("260")
                     }
                 }
                 Button {
@@ -494,7 +459,6 @@ Rectangle {
 
                             onTriggered: {
                                 screenshotMessage.close()
-                                console.log("361")
                                 screenshotButton.playing = false
                             }
                         }
