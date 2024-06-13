@@ -1,0 +1,10 @@
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/MediaPlayer.dir
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/MediaPlayer_qmlimportscan.dir
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/edit_cache.dir
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/rebuild_cache.dir
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/list_install_components.dir
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/install.dir
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/install/local.dir
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/install/strip.dir
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/MediaPlayer_autogen_timestamp_deps.dir
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Profile/CMakeFiles/MediaPlayer_autogen.dir

@@ -1,0 +1,9 @@
+-rootPath
+/home/morteza/code/qml/MediaPlayer-main
+-cmake-output
+-output-file
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_MediaPlayer.cmake
+-importPath
+/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Debug
+-importPath
+/home/morteza/Qt/6.7.0/gcc_64/./qml
