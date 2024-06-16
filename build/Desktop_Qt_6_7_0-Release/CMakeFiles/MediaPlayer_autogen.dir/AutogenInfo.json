@@ -1,17 +1,17 @@
 {
-	"BUILD_DIR" : "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen",
-	"CMAKE_BINARY_DIR" : "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/morteza/code/qml/MediaPlayer-main",
+	"BUILD_DIR" : "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen",
+	"CMAKE_BINARY_DIR" : "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/morteza/code/qml/MediaPlayer",
 	"CMAKE_EXECUTABLE" : "/home/morteza/Qt/Tools/CMake/bin/cmake",
 	"CMAKE_LIST_FILES" : 
 	[
-		"/home/morteza/code/qml/MediaPlayer-main/CMakeLists.txt",
-		"/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/.qtc/package-manager/auto-setup.cmake",
-		"/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/CMakeFiles/3.27.7/CMakeSystem.cmake",
+		"/home/morteza/code/qml/MediaPlayer/CMakeLists.txt",
+		"/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/.qtc/package-manager/auto-setup.cmake",
+		"/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/CMakeFiles/3.27.7/CMakeSystem.cmake",
 		"/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake",
 		"/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake",
-		"/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/CMakeFiles/3.27.7/CMakeCXXCompiler.cmake",
+		"/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/CMakeFiles/3.27.7/CMakeCXXCompiler.cmake",
 		"/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake",
 		"/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeGenericSystem.cmake",
 		"/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake",
@@ -1185,16 +1185,16 @@
 		"/home/morteza/Qt/6.7.0/gcc_64/lib/cmake/Qt6Multimedia/Qt6QGstreamerMediaPluginTargets-relwithdebinfo.cmake",
 		"/home/morteza/Qt/6.7.0/gcc_64/lib/cmake/Qt6Multimedia/Qt6QGstreamerMediaPluginAdditionalTargetInfo.cmake",
 		"/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/GNUInstallDirs.cmake",
-		"/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/.qt_plugins/Qt6_QmlPlugins_Imports_MediaPlayer.cmake",
-		"/home/morteza/code/qml/MediaPlayer-main/qml.qrc"
+		"/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/.qt_plugins/Qt6_QmlPlugins_Imports_MediaPlayer.cmake",
+		"/home/morteza/code/qml/MediaPlayer/qml.qrc"
 	],
-	"CMAKE_SOURCE_DIR" : "/home/morteza/code/qml/MediaPlayer-main",
-	"DEP_FILE" : "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/deps",
+	"CMAKE_SOURCE_DIR" : "/home/morteza/code/qml/MediaPlayer",
+	"DEP_FILE" : "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "MediaPlayer_autogen/timestamp",
 	"HEADERS" : [],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"QT_CORE_LIB",
@@ -1258,20 +1258,20 @@
 		"-c",
 		"/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
-	"PARSE_CACHE_FILE" : "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/CMakeFiles/MediaPlayer_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/CMakeFiles/MediaPlayer_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/home/morteza/Qt/6.7.0/gcc_64/./libexec/moc",
 	"QT_UIC_EXECUTABLE" : "",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 7,
-	"SETTINGS_FILE" : "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/CMakeFiles/MediaPlayer_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/CMakeFiles/MediaPlayer_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "/home/morteza/code/qml/MediaPlayer-main/main.cpp", "MU", null ]
+		[ "/home/morteza/code/qml/MediaPlayer/main.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

@@ -1,14 +1,14 @@
 # ninja log v5
-16	293	1718303805500809046	/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/.qt_plugins/Qt6_QmlPlugins_Imports_MediaPlayer.cmake	867c384b6c0b9b6f
-16	293	1718303805500809046	.qt_plugins/Qt6_QmlPlugins_Imports_MediaPlayer.cmake	867c384b6c0b9b6f
-293	1198	1718303806371550325	build.ninja	bb27bc93a4e576ac
-7	51	1718303806444528642	MediaPlayer_autogen/timestamp	cd3e096cdd4a5a3
-7	51	1718303806444528642	MediaPlayer_autogen/mocs_compilation.cpp	cd3e096cdd4a5a3
-7	51	1718303806444528642	/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/timestamp	cd3e096cdd4a5a3
-7	51	1718303806444528642	/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/mocs_compilation.cpp	cd3e096cdd4a5a3
-51	257	1718303806661464185	MediaPlayer_autogen/EWIEGA46WW/qrc_qml.cpp	d6e7ac8d51702bad
-51	257	1718303806661464185	/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/EWIEGA46WW/qrc_qml.cpp	d6e7ac8d51702bad
-257	274	1718303806681458244	CMakeFiles/MediaPlayer.dir/MediaPlayer_autogen/mocs_compilation.cpp.o	bd766de9c73ce6c7
-258	1651	1718303808059048930	CMakeFiles/MediaPlayer.dir/MediaPlayer_autogen/EWIEGA46WW/qrc_qml.cpp.o	5621719a50d055e0
-257	2985	1718303809392652692	CMakeFiles/MediaPlayer.dir/main.cpp.o	914dfbe41f1fd856
-2986	3620	1718303810019466456	MediaPlayer	d1524693cc3a8c19
+5	130	1718310363730680549	/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/.qt_plugins/Qt6_QmlPlugins_Imports_MediaPlayer.cmake	c32a8c2c6891c9da
+5	130	1718310363730680549	.qt_plugins/Qt6_QmlPlugins_Imports_MediaPlayer.cmake	c32a8c2c6891c9da
+130	695	1718310364270677943	build.ninja	1ca1175e8ab4cfb9
+5	30	1718310364320677702	MediaPlayer_autogen/timestamp	d0c9392a97e288ac
+5	30	1718310364320677702	MediaPlayer_autogen/mocs_compilation.cpp	d0c9392a97e288ac
+5	30	1718310364320677702	/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/timestamp	d0c9392a97e288ac
+5	30	1718310364320677702	/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/mocs_compilation.cpp	d0c9392a97e288ac
+30	113	1718310364407677282	MediaPlayer_autogen/EWIEGA46WW/qrc_qml.cpp	868edb5f8a8aceb7
+30	113	1718310364407677282	/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/MediaPlayer_autogen/EWIEGA46WW/qrc_qml.cpp	868edb5f8a8aceb7
+113	127	1718310364422677210	CMakeFiles/MediaPlayer.dir/MediaPlayer_autogen/mocs_compilation.cpp.o	8cb56917a682b0ef
+114	1174	1718310365469672161	CMakeFiles/MediaPlayer.dir/MediaPlayer_autogen/EWIEGA46WW/qrc_qml.cpp.o	5ca177c84f1a61bc
+114	2124	1718310366419667586	CMakeFiles/MediaPlayer.dir/main.cpp.o	d04379056cb94240
+2124	2536	1718310366827665623	MediaPlayer	d1524693cc3a8c19

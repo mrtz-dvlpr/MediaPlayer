@@ -822,11 +822,11 @@ MediaPlayer_autogen/timestamp: \
 	/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake \
 	/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux.cmake \
 	/home/morteza/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/UnixPaths.cmake \
-	/home/morteza/code/qml/MediaPlayer-main/CMakeLists.txt \
-	/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/.qt_plugins/Qt6_QmlPlugins_Imports_MediaPlayer.cmake \
-	/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/.qtc/package-manager/auto-setup.cmake \
-	/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/CMakeFiles/3.27.7/CMakeCXXCompiler.cmake \
-	/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/CMakeFiles/3.27.7/CMakeSystem.cmake \
-	/home/morteza/code/qml/MediaPlayer-main/main.cpp \
-	/home/morteza/code/qml/MediaPlayer-main/qml.qrc \
+	/home/morteza/code/qml/MediaPlayer/CMakeLists.txt \
+	/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/.qt_plugins/Qt6_QmlPlugins_Imports_MediaPlayer.cmake \
+	/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/.qtc/package-manager/auto-setup.cmake \
+	/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/CMakeFiles/3.27.7/CMakeCXXCompiler.cmake \
+	/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/CMakeFiles/3.27.7/CMakeSystem.cmake \
+	/home/morteza/code/qml/MediaPlayer/main.cpp \
+	/home/morteza/code/qml/MediaPlayer/qml.qrc \
 	/home/morteza/Qt/Tools/CMake/bin/cmake

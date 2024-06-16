@@ -1,4 +1,4 @@
-# Install script for directory: /home/morteza/code/qml/MediaPlayer-main
+# Install script for directory: /home/morteza/code/qml/MediaPlayer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -49,7 +49,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/MediaPlayer"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/MediaPlayer")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/MediaPlayer")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/MediaPlayer" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/MediaPlayer")
     file(RPATH_CHANGE
@@ -70,5 +70,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/morteza/code/qml/MediaPlayer-main/build/Desktop_Qt_6_7_0-Release/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/morteza/code/qml/MediaPlayer/build/Desktop_Qt_6_7_0-Release/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
