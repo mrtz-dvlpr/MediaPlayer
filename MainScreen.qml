@@ -318,6 +318,9 @@ Rectangle {
 
         setRateControlSliderValue: mediaPlayer.mediaPlayerPlaybackRate
 
+        x2ButtonImageSource: mediaPlayer.getMediaPlayerPlaybackRate
+                             === 2 ? "qrc:/icons/Pulsar/icons8-x2-96(1).png" : "qrc:/icons/Pulsar/icons8-x2-96.png"
+
         onZoomOutButtonClicked: {
             if (mediaPlayer.testX > 1 && mediaPlayer.testY > 1) {
                 mediaPlayer.testX -= 1
@@ -336,8 +339,5 @@ Rectangle {
             mediaPlayer.testX = 1
             mediaPlayer.testY = 1
         }
-
-        x2ButtonImageSource: mediaPlayer.getMediaPlayerPlaybackRate
-                             === 2 ? "qrc:/icons/Pulsar/icons8-x2-96(1).png" : "qrc:/icons/Pulsar/icons8-x2-96.png"
     }
 }

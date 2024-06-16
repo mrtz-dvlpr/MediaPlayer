@@ -1,0 +1,1 @@
+add " to screenshot capture name in dialog massage
