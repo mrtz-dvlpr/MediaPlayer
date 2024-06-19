@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
+import QtMultimedia
 
 Rectangle {
 
@@ -58,6 +59,8 @@ Rectangle {
             playbackControl.screenshotPath = getFilePath(
                         mediaPlayer.mediaPlayerSourceUrl)
         }
+
+        // if(mediaPlayer.met)
         view.push(screen)
     }
 
@@ -144,7 +147,7 @@ Rectangle {
     }
 
     Action {
-        shortcut: "Ctrl+Shift+Esc"
+        shortcut: "Ctrl+Esc"
         onTriggered: {
             window.close()
         }
@@ -157,23 +160,32 @@ Rectangle {
         }
     }
 
+    Action {
+        shortcut: "Ctrl+R"
+        onTriggered: {
+            playbackControl.repeatButtonClicked()
+        }
+    }
+
+    Action {
+        shortcut: "Ctrl+2"
+        onTriggered: {
+            playbackControl.x2ButtonClicked()
+        }
+    }
+
+    Action {
+        shortcut: "Ctrl+M"
+        onTriggered: {
+            playbackControl.muteButtonClicked()
+        }
+    }
+
     Media {
 
         color: mainColor
 
         id: mediaPlayer
-
-        onPlayOrPause: {
-            if (mediaPlayer.getHasVideo) {
-                if (mediaPlayer.getPlaying) {
-                    playbackControl.playtAndPauseButtonIconPath
-                            = "qrc:/icons/Pulsar/icons8-pause-button-96 (1).png"
-                } else {
-                    playbackControl.playtAndPauseButtonIconPath
-                            = "qrc:/icons/Pulsar/icons8-circled-play-96.png"
-                }
-            }
-        }
     }
 
     FileDialog {
@@ -182,7 +194,8 @@ Rectangle {
         onAccepted: {
             pushPage(mediaPlayer, selectedFile)
         }
-        nameFilters: ["Video Files (*.mov *.mp4 *.m4v *.mpeg *.mpg *.3gp *.3g2 *.avi *.dv)", "All Files (*)"]
+        nameFilters: ["Video Files (*.mov *.mp4 *.m4v *.mpeg *.mpg *.3gp *.3g2 *.avi *.dv
+*.wav *.mp3 *.aac *.flac)", "All Files (*)"]
     }
 
     PathScreen {
@@ -221,12 +234,12 @@ Rectangle {
         color: mainRoot.mainColor
 
         onPlayAndPauseButtonClicked: {
-            mediaPlayer.getHasVideo
+            (mediaPlayer.getHasVideo || mediaPlayer.getHasAudio)
                     && mediaPlayer.getPlaying ? mediaPlayer.pause(
                                                     ) : mediaPlayer.play()
         }
 
-        setVideoSliderTo: mediaPlayer.getHasVideo ? mediaPlayer.getDuration : 0
+        setVideoSliderTo: /* mediaPlayer.getHasVideo ? */ mediaPlayer.getDuration /*: 0*/
 
         onStopButtonClicked: mediaPlayer.stop()
 
@@ -322,7 +335,8 @@ Rectangle {
                              === 2 ? "qrc:/icons/Pulsar/icons8-x2-96(1).png" : "qrc:/icons/Pulsar/icons8-x2-96.png"
 
         onZoomOutButtonClicked: {
-            if (mediaPlayer.testX > 1 && mediaPlayer.testY > 1) {
+            if (mediaPlayer.getHasVideo && mediaPlayer.testX > 1
+                    && mediaPlayer.testY > 1) {
                 mediaPlayer.testX -= 1
                 mediaPlayer.testY -= 1
             } else {
@@ -331,13 +345,29 @@ Rectangle {
             }
         }
         onZoomInButtonClicked: {
-            mediaPlayer.testX += 1
-            mediaPlayer.testY += 1
+            if (mediaPlayer.getHasVideo) {
+                mediaPlayer.testX += 1
+                mediaPlayer.testY += 1
+            }
         }
 
         onOrginalScreenSizeButtonClicked: {
-            mediaPlayer.testX = 1
-            mediaPlayer.testY = 1
+            if (mediaPlayer.getHasVideo) {
+
+                mediaPlayer.testX = 1
+                mediaPlayer.testY = 1
+            }
+        }
+
+        playtAndPauseButtonIconPath: (mediaPlayer.getHasVideo
+                                      || mediaPlayer.getHasAudio)
+                                     && mediaPlayer.getPlaying ? "qrc:/icons/Pulsar/icons8-pause-button-96 (1).png" : "qrc:/icons/Pulsar/icons8-circled-play-96.png"
+
+        repeatButtonSource: mediaPlayer.getMediaPlayerLoops
+                            === 1 ? "qrc:/icons/Pulsar/icons8-repeat-96 (3).png" : "qrc:/icons/Pulsar/icons8-repeat-96 (2).png"
+        onRepeatButtonClicked: {
+            mediaPlayer.setMediaPlayerLoops = mediaPlayer.getMediaPlayerLoops
+                    !== 1 ? 1 : MediaPlayer.Infinite
         }
     }
 }

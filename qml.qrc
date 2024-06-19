@@ -309,5 +309,9 @@
         <file>icons/Pulsar/icons8-insert-button-96 (2).png</file>
         <file>icons/Pulsar/icons8-pause-button-96 (1).png</file>
         <file>icons/Pulsar/icons8-stop-circled-96 (1).png</file>
+        <file>icons/Pulsar/icons8-repeat-96 (1).png</file>
+        <file>icons/Pulsar/icons8-repeat-96.png</file>
+        <file>icons/Pulsar/icons8-repeat-96 (3).png</file>
+        <file>icons/Pulsar/icons8-repeat-96 (2).png</file>
     </qresource>
 </RCC>

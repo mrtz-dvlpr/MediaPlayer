@@ -72,7 +72,7 @@ Rectangle {
 
             var fileExtension = str.split('.').pop().toLowerCase()
 
-            var supportedExtensions = ['mp4', 'avi', 'mov', 'mkv', 'mpeg', 'mpg', '3gp', '3g2', 'dv']
+            var supportedExtensions = ['mp4', 'avi', 'mov', 'mkv', 'mpeg', 'mpg', '3gp', '3g2', 'dv', 'wav', 'mp3', 'aac', 'flac']
             if (supportedExtensions.indexOf(fileExtension) !== -1) {
 
                 dropAreaDropUlr = str

@@ -23,6 +23,8 @@ Rectangle {
 
     property bool getHasVideo: mediaPlayer.hasVideo
 
+    property bool getHasAudio: mediaPlayer.hasAudio
+
     property bool getPlaying: mediaPlayer.playing
 
     property int rotationDegrees
@@ -36,6 +38,10 @@ Rectangle {
     property real testX: 1
 
     property real testY: 1
+
+    property int setMediaPlayerLoops
+
+    property int getMediaPlayerLoops: mediaPlayer.loops
 
     signal playOrPause
 
@@ -65,11 +71,7 @@ Rectangle {
 
         autoPlay: true
 
-        audioOutput: AudioOutput {
-            id: audioOutput
-            volume: audioVolume
-            muted: root.setMuted
-        }
+        audioOutput: audioOutput
 
         videoOutput: videoOutput
 
@@ -80,11 +82,19 @@ Rectangle {
         onPositionChanged: mediaPlayerPositionChanged()
 
         playbackRate: mediaPlayerPlaybackRate
+
+        loops: setMediaPlayerLoops
     }
 
     property real minScale: 1.0
     property real maxScale: 5.0
     property real currentScale: 1.0
+
+    AudioOutput {
+        id: audioOutput
+        volume: audioVolume
+        muted: root.setMuted
+    }
 
     VideoOutput {
         id: videoOutput
@@ -103,6 +113,7 @@ Rectangle {
                 yScale: testY
             }
         ]
+
         MouseArea {
             id: mouseArea
             anchors.fill: parent

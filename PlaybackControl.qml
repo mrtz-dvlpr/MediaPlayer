@@ -44,6 +44,8 @@ Rectangle {
 
     property real setRateControlSliderValue
 
+    property string repeatButtonSource
+
     signal playAndPauseButtonClicked
 
     signal stopButtonClicked
@@ -77,6 +79,8 @@ Rectangle {
     signal zoomInButtonClicked
 
     signal orginalScreenSizeButtonClicked
+
+    signal repeatButtonClicked
 
     function openScreenshotDialog(inputMessage, messageColor) {
         dialogLabel.text = qsTr(inputMessage)
@@ -169,6 +173,19 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
 
                 spacing: 4
+
+                Button {
+                    id: repeatButtom
+                    width: buttonSize * 3 / 5
+                    height: width
+
+                    background: Image {
+                        source: repeatButtonSource
+                    }
+                    onClicked: {
+                        repeatButtonClicked()
+                    }
+                }
 
                 Button {
                     id: muteButtom
