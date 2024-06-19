@@ -17,7 +17,7 @@ if in the clone file be .user file delete that
 ---
 ### dependency :
   ffmpeg : 
-  First install ffmpeg in linux with 
+  install ffmpeg in linux with 
 
   ```
 
