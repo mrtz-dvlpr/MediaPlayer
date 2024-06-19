@@ -13,7 +13,7 @@ Rectangle {
         anchors.centerIn: parent
 
         Image {
-            source: "qrc:/icons/Pulsar/icons8-audio-file-96.png"
+            source: mediaPlayer.metaData.coverArtUrlLarg ? mediaPlayer.metaData.coverArtUrlLarg : "qrc:/icons/Pulsar/icons8-audio-file-96.png"
             width: root.width / 10
             height: width
             anchors.horizontalCenter: parent.horizontalCenter
@@ -98,7 +98,9 @@ Rectangle {
 
         videoOutput: videoOutput
 
-        onPositionChanged: mediaPlayerPositionChanged()
+        onPositionChanged: {
+            mediaPlayerPositionChanged()
+        }
 
         playbackRate: mediaPlayerPlaybackRate
 

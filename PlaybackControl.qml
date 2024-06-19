@@ -438,6 +438,7 @@ Rectangle {
                     height: width
 
                     background: Image {
+                        id: image
                         source: screenshotButton.pressed ? "qrc:/icons/Pulsar/icons8-screenshot-96.png" : "qrc:/icons/Pulsar/icons8-screenshot-96(1).png"
                     }
 
@@ -479,6 +480,7 @@ Rectangle {
                             onTriggered: {
                                 screenshotMessage.close()
                                 screenshotButton.playing = false
+                                image.source = ""
                             }
                         }
                     }
