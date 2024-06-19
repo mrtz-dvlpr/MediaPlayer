@@ -6,7 +6,6 @@ import QtQuick.Dialogs
 Rectangle {
 
     id: root
-
     Column {
 
         visible: mediaPlayer.hasVideo ? false : true
@@ -15,17 +14,19 @@ Rectangle {
 
         Image {
             source: "qrc:/icons/Pulsar/icons8-audio-file-96.png"
-            width: parent.width
+            width: root.width / 10
             height: width
+            anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Text {
 
             id: text
             color: subColor2
-            text: qsTr("Audio file")
-
-            x: (parent.width - width) / 2
+            // text: qsTr("Audio file")
+            text: qsTr(fileName)
+            // x: (parent.width - width) / 2
+            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
 

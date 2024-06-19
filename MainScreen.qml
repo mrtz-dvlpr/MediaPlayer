@@ -76,6 +76,20 @@ Rectangle {
     }
 
     Action {
+        shortcut: "Return"
+        onTriggered: {
+            playbackControl.toggleFullScreenButtonClicked()
+        }
+    }
+
+    Action {
+        shortcut: "Backspace"
+        onTriggered: {
+            playbackControl.ejectButtonClicked()
+        }
+    }
+
+    Action {
         shortcut: "Esc"
         onTriggered: {
             mediaPlayer.testX = 1
@@ -139,23 +153,9 @@ Rectangle {
     }
 
     Action {
-        shortcut: "Backspace"
-        onTriggered: {
-            playbackControl.ejectButtonClicked()
-        }
-    }
-
-    Action {
         shortcut: "Ctrl+Esc"
         onTriggered: {
             window.close()
-        }
-    }
-
-    Action {
-        shortcut: "Return"
-        onTriggered: {
-            playbackControl.toggleFullScreenButtonClicked()
         }
     }
 
@@ -185,7 +185,6 @@ Rectangle {
         color: mainColor
 
         id: mediaPlayer
-
     }
 
     FileDialog {
