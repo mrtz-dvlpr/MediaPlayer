@@ -51,7 +51,7 @@ Rectangle {
         mediaPlayer.mediaPlayerSourceUrl = path
         mediaPlayer.audioVolume = playbackControl.getAudioSliderValue
 
-        playbackControl.setVideoSliderEnable = true
+        playbackControl.setMediaSliderEnable = true
 
         fileName = getFileName(mediaPlayer.mediaPlayerSourceUrl)
 
@@ -71,7 +71,7 @@ Rectangle {
 
         fileName = ""
 
-        playbackControl.setVideoSliderEnable = false
+        playbackControl.setMediaSliderEnable = false
 
         view.pop()
     }
@@ -239,25 +239,37 @@ Rectangle {
                                                     ) : mediaPlayer.play()
         }
 
-        setVideoSliderTo: /* mediaPlayer.getHasVideo ? */ mediaPlayer.getDuration /*: 0*/
+        setMediaSliderTo: /* mediaPlayer.getHasVideo ? */ mediaPlayer.getDuration /*: 0*/
 
         onStopButtonClicked: mediaPlayer.stop()
+
+        playtAndPauseButtonIconPath: (mediaPlayer.getHasVideo
+                                      || mediaPlayer.getHasAudio)
+                                     && mediaPlayer.getPlaying ? "qrc:/icons/Pulsar/icons8-pause-button-96 (1).png" : "qrc:/icons/Pulsar/icons8-circled-play-96.png"
+
+        repeatButtonSource: mediaPlayer.getMediaPlayerLoops
+                            === 1 ? "qrc:/icons/Pulsar/icons8-repeat-96 (3).png" : "qrc:/icons/Pulsar/icons8-repeat-96 (2).png"
+
+        setMediaSliderValue: mediaPlayer.getPosition
+
+        audioMuteButtonSource: mediaPlayer.setMuted ? "qrc:/icons/Pulsar/icons8-mute-96.png" : "qrc:/icons/Pulsar/icons8-voice-96.png"
+
+        setRateControlSliderValue: mediaPlayer.mediaPlayerPlaybackRate
+
+        x2ButtonImageSource: mediaPlayer.getMediaPlayerPlaybackRate
+                             === 2 ? "qrc:/icons/Pulsar/icons8-x2-96(1).png" : "qrc:/icons/Pulsar/icons8-x2-96.png"
 
         onEjectButtonClicked: {
             popPage()
         }
 
         onVideoSliderMoved: {
-            mediaPlayer.setPosition = getVideoSliderValue
+            mediaPlayer.setPosition = getMediaSliderValue
         }
-
-        setVideoSliderValue: mediaPlayer.getPosition
 
         onAudioSliderValueChanged: {
             mediaPlayer.audioVolume = getAudioSliderValue
         }
-
-        audioMuteButtonSource: mediaPlayer.setMuted ? "qrc:/icons/Pulsar/icons8-mute-96.png" : "qrc:/icons/Pulsar/icons8-voice-96.png"
 
         onMuteButtonClicked: {
             mediaPlayer.setMuted = !mediaPlayer.setMuted
@@ -274,7 +286,7 @@ Rectangle {
                 mediaPlayer.videoOutput.grabToImage(function (result) {
 
                     screenshotName = fileName + "_" + millisToMinutesAndSeconds(
-                                getVideoSliderValue) + ".png"
+                                getMediaSliderValue) + ".png"
                     var captureNameAndDirectory = "file://" + screenshotPath + "/" + screenshotName
 
                     if (result.saveToFile(captureNameAndDirectory)) {
@@ -300,11 +312,18 @@ Rectangle {
         }
 
         onReplayButtonClicked: {
-            mediaPlayer.setPosition = (mediaPlayer.getPosition - 30000)
+            if (mediaPlayer.getPosition > 30000) {
+
+                mediaPlayer.setPosition = (mediaPlayer.getPosition - 30000)
+            }
         }
 
         onForwardButtonClicked: {
-            mediaPlayer.setPosition = (mediaPlayer.getPosition + 30000)
+
+            if (mediaPlayer.getDuration - mediaPlayer.getPosition > 30000) {
+
+                mediaPlayer.setPosition = (mediaPlayer.getPosition + 30000)
+            }
         }
 
         onSettingDialogAccepted: {
@@ -328,11 +347,6 @@ Rectangle {
         onX2ButtonClicked: {
             mediaPlayer.mediaPlayerPlaybackRate = mediaPlayer.mediaPlayerPlaybackRate === 2 ? 1 : 2
         }
-
-        setRateControlSliderValue: mediaPlayer.mediaPlayerPlaybackRate
-
-        x2ButtonImageSource: mediaPlayer.getMediaPlayerPlaybackRate
-                             === 2 ? "qrc:/icons/Pulsar/icons8-x2-96(1).png" : "qrc:/icons/Pulsar/icons8-x2-96.png"
 
         onZoomOutButtonClicked: {
             if (mediaPlayer.getHasVideo && mediaPlayer.testX > 1
@@ -359,12 +373,6 @@ Rectangle {
             }
         }
 
-        playtAndPauseButtonIconPath: (mediaPlayer.getHasVideo
-                                      || mediaPlayer.getHasAudio)
-                                     && mediaPlayer.getPlaying ? "qrc:/icons/Pulsar/icons8-pause-button-96 (1).png" : "qrc:/icons/Pulsar/icons8-circled-play-96.png"
-
-        repeatButtonSource: mediaPlayer.getMediaPlayerLoops
-                            === 1 ? "qrc:/icons/Pulsar/icons8-repeat-96 (3).png" : "qrc:/icons/Pulsar/icons8-repeat-96 (2).png"
         onRepeatButtonClicked: {
             mediaPlayer.setMediaPlayerLoops = mediaPlayer.getMediaPlayerLoops
                     !== 1 ? 1 : MediaPlayer.Infinite

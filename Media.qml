@@ -85,9 +85,6 @@ Rectangle {
 
         loops: setMediaPlayerLoops
     }
-
-    property real minScale: 1.0
-    property real maxScale: 5.0
     property real currentScale: 1.0
 
     AudioOutput {

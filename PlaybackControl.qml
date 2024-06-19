@@ -12,15 +12,15 @@ Rectangle {
 
     property int buttonSize: 50
 
-    property real setVideoSliderTo
+    property real setMediaSliderTo
 
-    property real setVideoSliderValue
+    property real setMediaSliderValue
 
-    property bool setVideoSliderEnable
+    property bool setMediaSliderEnable
 
-    property real getAudioSliderValue: audioSlider.value / audioSlider.to
+    property real getAudioSliderValue: soundSlider.value / soundSlider.to
 
-    property real getVideoSliderValue: videoSlider.value
+    property real getMediaSliderValue: mediaSlider.value
 
     property bool setLowerSoundAudioButtomEnable
 
@@ -112,33 +112,33 @@ Rectangle {
 
                     id: positionTimeText
 
-                    text: qsTr(millisToMinutesAndSeconds(setVideoSliderValue))
+                    text: qsTr(millisToMinutesAndSeconds(setMediaSliderValue))
 
                     color: subColor
                 }
 
-                VideoSlider {
+                MediaSlider {
 
-                    id: videoSlider
+                    id: mediaSlider
                     width: videoSliderRow.width - positionTimeText.width
                            - toggleFullScreen.width - x2Button.width - 50
 
                     from: 0.0
-                    value: setVideoSliderValue
-                    to: setVideoSliderTo
+                    value: setMediaSliderValue
+                    to: setMediaSliderTo
 
                     onMoved: {
                         videoSliderMoved()
                     }
 
-                    enabled: setVideoSliderEnable
+                    enabled: setMediaSliderEnable
                 }
 
                 Text {
 
                     id: toggleFullScreen
 
-                    text: qsTr(millisToMinutesAndSeconds(setVideoSliderTo))
+                    text: qsTr(millisToMinutesAndSeconds(setMediaSliderTo))
 
                     color: subColor
                 }
@@ -200,8 +200,8 @@ Rectangle {
                     }
                 }
 
-                AudioSlider {
-                    id: audioSlider
+                SoundSlider {
+                    id: soundSlider
 
                     stepSize: 5
 

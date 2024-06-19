@@ -6,8 +6,8 @@ Slider {
 
     property color variableColor: Qt.rgba(
                                       0.98,
-                                      (100 - audioSlider.value) * 82 / 10000 + 0.32,
-                                      (100 - audioSlider.value) * 82 / 10000 + 0.32,
+                                      (100 - soundSlider.value) * 82 / 10000 + 0.32,
+                                      (100 - soundSlider.value) * 82 / 10000 + 0.32,
                                       1)
 
     background: Rectangle {
