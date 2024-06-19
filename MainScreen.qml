@@ -60,7 +60,6 @@ Rectangle {
                         mediaPlayer.mediaPlayerSourceUrl)
         }
 
-        // if(mediaPlayer.met)
         view.push(screen)
     }
 
@@ -186,6 +185,7 @@ Rectangle {
         color: mainColor
 
         id: mediaPlayer
+
     }
 
     FileDialog {

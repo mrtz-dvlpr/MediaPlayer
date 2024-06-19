@@ -42,7 +42,7 @@ Rectangle {
             }
             Text {
                 id: name
-                text: "<font color=\"#ABB2B9\">click </font><font color=\"#FA5252\">here (Ctrl+O)</font> <font color=\"#ABB2B9\">to select video file </font></hr><font color=\"#ABB2B9\"> or drop here </font>"
+                text: "<font color=\"#ABB2B9\">click </font><font color=\"#FA5252\">here (Ctrl+O)</font> <font color=\"#ABB2B9\">to select file </font></hr><font color=\"#ABB2B9\"> or drop here </font>"
             }
         }
     }

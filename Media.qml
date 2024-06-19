@@ -7,6 +7,28 @@ Rectangle {
 
     id: root
 
+    Column {
+
+        visible: mediaPlayer.hasVideo ? false : true
+        spacing: 20
+        anchors.centerIn: parent
+
+        Image {
+            source: "qrc:/icons/Pulsar/icons8-audio-file-96.png"
+            width: parent.width
+            height: width
+        }
+
+        Text {
+
+            id: text
+            color: subColor2
+            text: qsTr("Audio file")
+
+            x: (parent.width - width) / 2
+        }
+    }
+
     property string mediaPlayerSourceUrl
 
     property real audioVolume
@@ -43,7 +65,7 @@ Rectangle {
 
     property int getMediaPlayerLoops: mediaPlayer.loops
 
-    signal playOrPause
+    property real currentScale: 1.0
 
     signal mediaPlayerPositionChanged
 
@@ -75,17 +97,12 @@ Rectangle {
 
         videoOutput: videoOutput
 
-        onPlaybackStateChanged: {
-            playOrPause()
-        }
-
         onPositionChanged: mediaPlayerPositionChanged()
 
         playbackRate: mediaPlayerPlaybackRate
 
         loops: setMediaPlayerLoops
     }
-    property real currentScale: 1.0
 
     AudioOutput {
         id: audioOutput

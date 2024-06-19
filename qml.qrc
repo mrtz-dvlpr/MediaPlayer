@@ -71,5 +71,6 @@
         <file>icons/Pulsar/icons8-repeat-96.png</file>
         <file>icons/Pulsar/icons8-repeat-96 (3).png</file>
         <file>icons/Pulsar/icons8-repeat-96 (2).png</file>
+        <file>icons/Pulsar/icons8-audio-file-96.png</file>
     </qresource>
 </RCC>
