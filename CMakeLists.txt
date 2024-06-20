@@ -69,3 +69,13 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(MediaPlayer)
     qt_finalize_executable(MediaPlayer)
 endif()
+
+
+
+set(APP_ICON "qrc:/icons/icons8-circled-play-96 (1).png")
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    WIN32_EXECUTABLE TRUE
+    MACOSX_BUNDLE TRUE
+    MACOSX_BUNDLE_ICON_FILE ${APP_ICON}
+)
+

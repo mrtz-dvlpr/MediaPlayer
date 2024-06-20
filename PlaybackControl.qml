@@ -46,8 +46,6 @@ Rectangle {
 
     property string repeatButtonSource
 
-    property int toolTipPixelSize: 8
-
     signal playAndPauseButtonClicked
 
     signal stopButtonClicked
@@ -151,31 +149,13 @@ Rectangle {
                     width: buttonSize * 3 / 9
                     height: width
 
-                    ToolTip {
-                        id: tooltip
-
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Ctrl+2"
-
-                        font.pixelSize: toolTipPixelSize
-
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: x2Button
+                        text: "X2 rate ( Ctrl+2 )"
                     }
 
                     background: Image {
+
                         source: x2ButtonImageSource
                     }
 
@@ -205,27 +185,9 @@ Rectangle {
                     width: buttonSize * 3 / 5
                     height: width
 
-                    ToolTip {
-
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Ctrl+R"
-
-                        font.pixelSize: toolTipPixelSize
-
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: parent
+                        text: "repeat ( Ctrl+R )"
                     }
 
                     background: Image {
@@ -240,27 +202,10 @@ Rectangle {
                     id: muteButtom
                     width: buttonSize * 3 / 5
                     height: width
-                    ToolTip {
 
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Ctrl+M"
-
-                        font.pixelSize: toolTipPixelSize
-
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: parent
+                        text: "mute ( Ctrl+M )"
                     }
 
                     background: Image {
@@ -295,37 +240,20 @@ Rectangle {
 
                 Button {
 
-                    id: repleyButton
+                    id: rewindButton
 
                     width: buttonSize * 8 / 10
                     height: width
 
-                    ToolTip {
-
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Left"
-
-                        font.pixelSize: toolTipPixelSize
-
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: parent
+                        text: "rewind 30 s ( Left )"
                     }
+
                     anchors.bottom: parent.bottom
 
                     background: Image {
-                        source: repleyButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96.png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (3).png"
+                        source: rewindButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96.png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (3).png"
                     }
 
                     onClicked: replayButtonClicked()
@@ -336,28 +264,12 @@ Rectangle {
 
                     width: buttonSize
                     height: width
-                    ToolTip {
 
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Backspace"
-
-                        font.pixelSize: toolTipPixelSize
-
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: parent
+                        text: "go path screen ( BackSpace )"
                     }
+
                     background: Image {
                         source: eject.pressed ? "qrc:/icons/Pulsar/icons8-insert-button-96 (2).png" : "qrc:/icons/Pulsar/icons8-insert-button-96 (1).png"
                     }
@@ -369,27 +281,12 @@ Rectangle {
 
                     width: buttonSize
                     height: width
-                    ToolTip {
 
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Space"
-
-                        font.pixelSize: toolTipPixelSize
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: parent
+                        text: "play / pause ( Space )"
                     }
+
                     background: Image {
 
                         id: playAndPauseButtonImage
@@ -406,6 +303,11 @@ Rectangle {
                     width: buttonSize
                     height: width
 
+                    ButtonToolTip {
+                        button: parent
+                        text: "stop"
+                    }
+
                     background: Image {
 
                         source: stop.pressed ? "qrc:/icons/Pulsar/icons8-stop-circled-96 (1).png" : "qrc:/icons/Pulsar/icons8-stop-circled-96.png"
@@ -418,34 +320,19 @@ Rectangle {
 
                 Button {
 
-                    id: forwardButton
+                    id: fastForwardButton
 
                     width: buttonSize * 8 / 10
                     height: width
-                    ToolTip {
 
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Right"
-
-                        font.pixelSize: toolTipPixelSize
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: parent
+                        text: "fast forward 30 s ( Right )"
                     }
+
                     anchors.bottom: parent.bottom
                     background: Image {
-                        source: forwardButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (2).png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (1).png"
+                        source: fastForwardButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (2).png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (1).png"
                     }
                     onClicked: forwardButtonClicked()
                 }
@@ -466,7 +353,10 @@ Rectangle {
 
                     width: buttonSize * 4 / 5
                     height: width
-
+                    ButtonToolTip {
+                        button: parent
+                        text: "setting"
+                    }
                     background: Image {
                         source: settingDialog.opened ? "qrc:/icons/Pulsar/icons8-settings-96.png" : "qrc:/icons/Pulsar/icons8-settings-96(1).png"
                     }
@@ -510,6 +400,10 @@ Rectangle {
                                     id: rotateLeftButton
                                     width: buttonSize
                                     height: width
+                                    ButtonToolTip {
+                                        button: parent
+                                        text: "rotate 90 deg left"
+                                    }
                                     background: Image {
                                         source: "qrc:/icons/Pulsar/icons8-rotate-left-96 (1).png"
                                     }
@@ -519,6 +413,10 @@ Rectangle {
                                     id: rotateRightButton
                                     width: buttonSize
                                     height: width
+                                    ButtonToolTip {
+                                        button: parent
+                                        text: "rotate 90 deg right"
+                                    }
                                     background: Image {
                                         source: "qrc:/icons/Pulsar/icons8-rotate-right-96 (1).png"
                                     }
@@ -590,27 +488,9 @@ Rectangle {
 
                     width: buttonSize * 3 / 4
                     height: width
-                    ToolTip {
-
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Ctrl+S"
-
-                        font.pixelSize: toolTipPixelSize
-
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: parent
+                        text: "screenshot ( Ctrl+S )"
                     }
 
                     background: Image {
@@ -663,28 +543,12 @@ Rectangle {
                 }
                 Button {
                     id: toggleFullScreenButton
-                    ToolTip {
 
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Enter"
-
-                        font.pixelSize: toolTipPixelSize
-
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: parent
+                        text: "full screen ( Enter )"
                     }
+
                     width: buttonSize * 3 / 4
                     height: width
 
@@ -700,7 +564,10 @@ Rectangle {
 
                     width: buttonSize * 3.5 / 4
                     height: width
-
+                    ButtonToolTip {
+                        button: parent
+                        text: "zoom in"
+                    }
                     background: Image {
                         source: zoomInButton.pressed ? "qrc:/icons/Pulsar/icons8-zoom-in-96.png" : "qrc:/icons/Pulsar/icons8-zoom-in-96(1).png"
                     }
@@ -713,27 +580,10 @@ Rectangle {
 
                     width: buttonSize * 3 / 4
                     height: width
-                    ToolTip {
 
-                        padding: 5
-
-                        opacity: 0.8
-
-                        visible: parent.hovered
-
-                        text: "Esc"
-
-                        font.pixelSize: toolTipPixelSize
-
-                        delay: 100
-                        timeout: 0
-
-                        background: Rectangle {
-                            radius: 3
-                            border.width: 1
-                            opacity: 0.3
-                            color: "white"
-                        }
+                    ButtonToolTip {
+                        button: parent
+                        text: "first size screen ( Esc )"
                     }
 
                     background: Image {
@@ -748,7 +598,10 @@ Rectangle {
 
                     width: buttonSize * 3 / 4.5
                     height: width
-
+                    ButtonToolTip {
+                        button: parent
+                        text: "zoom out"
+                    }
                     background: Image {
                         source: zoomOutButton.pressed ? "qrc:/icons/Pulsar/icons8-zoom-out-96(1).png" : "qrc:/icons/Pulsar/icons8-zoom-out-96.png"
                     }
