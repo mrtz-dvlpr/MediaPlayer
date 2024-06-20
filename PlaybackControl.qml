@@ -46,6 +46,8 @@ Rectangle {
 
     property string repeatButtonSource
 
+    property int toolTipPixelSize: 8
+
     signal playAndPauseButtonClicked
 
     signal stopButtonClicked
@@ -149,6 +151,30 @@ Rectangle {
                     width: buttonSize * 3 / 9
                     height: width
 
+                    ToolTip {
+                        id: tooltip
+
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Ctrl+2"
+
+                        font.pixelSize: toolTipPixelSize
+
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
+
                     background: Image {
                         source: x2ButtonImageSource
                     }
@@ -179,6 +205,29 @@ Rectangle {
                     width: buttonSize * 3 / 5
                     height: width
 
+                    ToolTip {
+
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Ctrl+R"
+
+                        font.pixelSize: toolTipPixelSize
+
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
+
                     background: Image {
                         source: repeatButtonSource
                     }
@@ -191,6 +240,28 @@ Rectangle {
                     id: muteButtom
                     width: buttonSize * 3 / 5
                     height: width
+                    ToolTip {
+
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Ctrl+M"
+
+                        font.pixelSize: toolTipPixelSize
+
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
 
                     background: Image {
                         source: audioMuteButtonSource
@@ -229,6 +300,28 @@ Rectangle {
                     width: buttonSize * 8 / 10
                     height: width
 
+                    ToolTip {
+
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Left"
+
+                        font.pixelSize: toolTipPixelSize
+
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
                     anchors.bottom: parent.bottom
 
                     background: Image {
@@ -243,7 +336,28 @@ Rectangle {
 
                     width: buttonSize
                     height: width
+                    ToolTip {
 
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Backspace"
+
+                        font.pixelSize: toolTipPixelSize
+
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
                     background: Image {
                         source: eject.pressed ? "qrc:/icons/Pulsar/icons8-insert-button-96 (2).png" : "qrc:/icons/Pulsar/icons8-insert-button-96 (1).png"
                     }
@@ -255,7 +369,27 @@ Rectangle {
 
                     width: buttonSize
                     height: width
+                    ToolTip {
 
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Space"
+
+                        font.pixelSize: toolTipPixelSize
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
                     background: Image {
 
                         id: playAndPauseButtonImage
@@ -288,7 +422,27 @@ Rectangle {
 
                     width: buttonSize * 8 / 10
                     height: width
+                    ToolTip {
 
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Right"
+
+                        font.pixelSize: toolTipPixelSize
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
                     anchors.bottom: parent.bottom
                     background: Image {
                         source: forwardButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (2).png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (1).png"
@@ -436,6 +590,28 @@ Rectangle {
 
                     width: buttonSize * 3 / 4
                     height: width
+                    ToolTip {
+
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Ctrl+S"
+
+                        font.pixelSize: toolTipPixelSize
+
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
 
                     background: Image {
                         id: image
@@ -487,7 +663,28 @@ Rectangle {
                 }
                 Button {
                     id: toggleFullScreenButton
+                    ToolTip {
 
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Enter"
+
+                        font.pixelSize: toolTipPixelSize
+
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
                     width: buttonSize * 3 / 4
                     height: width
 
@@ -516,6 +713,28 @@ Rectangle {
 
                     width: buttonSize * 3 / 4
                     height: width
+                    ToolTip {
+
+                        padding: 5
+
+                        opacity: 0.8
+
+                        visible: parent.hovered
+
+                        text: "Esc"
+
+                        font.pixelSize: toolTipPixelSize
+
+                        delay: 100
+                        timeout: 0
+
+                        background: Rectangle {
+                            radius: 3
+                            border.width: 1
+                            opacity: 0.3
+                            color: "white"
+                        }
+                    }
 
                     background: Image {
                         source: orginalScreenSizeButton.pressed ? "qrc:/icons/Pulsar/icons8-original-size-96.png" : "qrc:/icons/Pulsar/icons8-original-size-96(1).png"
