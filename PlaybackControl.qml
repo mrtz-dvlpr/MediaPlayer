@@ -144,10 +144,12 @@ Rectangle {
                 }
 
                 Button {
+                    down: false
                     id: x2Button
 
                     width: buttonSize * 3 / 9
                     height: width
+                    flat: true
 
                     ButtonToolTip {
                         button: x2Button
@@ -181,6 +183,8 @@ Rectangle {
                 spacing: 4
 
                 Button {
+                    down: false
+                    flat: true
                     id: repeatButtom
                     width: buttonSize * 3 / 5
                     height: width
@@ -199,6 +203,8 @@ Rectangle {
                 }
 
                 Button {
+                    down: false
+                    flat: true
                     id: muteButtom
                     width: buttonSize * 3 / 5
                     height: width
@@ -239,6 +245,8 @@ Rectangle {
                 anchors.centerIn: parent
 
                 Button {
+                    down: false
+                    flat: true
 
                     id: rewindButton
 
@@ -260,6 +268,8 @@ Rectangle {
                 }
 
                 Button {
+                    down: false
+                    flat: true
                     id: eject
 
                     width: buttonSize
@@ -277,6 +287,8 @@ Rectangle {
                 }
 
                 Button {
+                    down: false
+                    flat: true
                     id: playAndPauseButton
 
                     width: buttonSize
@@ -298,6 +310,8 @@ Rectangle {
                     }
                 }
                 Button {
+                    down: false
+                    flat: true
                     id: stop
 
                     width: buttonSize
@@ -319,6 +333,8 @@ Rectangle {
                 }
 
                 Button {
+                    down: false
+                    flat: true
 
                     id: fastForwardButton
 
@@ -349,6 +365,8 @@ Rectangle {
                 spacing: 10
 
                 Button {
+                    down: false
+                    flat: true
                     id: settingButton
 
                     width: buttonSize * 4 / 5
@@ -397,6 +415,8 @@ Rectangle {
                                 spacing: 50
 
                                 Button {
+                                    down: false
+                                    flat: true
                                     id: rotateLeftButton
                                     width: buttonSize
                                     height: width
@@ -410,6 +430,8 @@ Rectangle {
                                     onClicked: rotateLeftButtonClicked()
                                 }
                                 Button {
+                                    down: false
+                                    flat: true
                                     id: rotateRightButton
                                     width: buttonSize
                                     height: width
@@ -483,6 +505,8 @@ Rectangle {
                 }
 
                 Button {
+                    down: false
+                    flat: true
 
                     id: screenshotButton
 
@@ -536,12 +560,13 @@ Rectangle {
                             onTriggered: {
                                 screenshotMessage.close()
                                 screenshotButton.playing = false
-                                image.source = ""
                             }
                         }
                     }
                 }
                 Button {
+                    down: false
+                    flat: true
                     id: toggleFullScreenButton
 
                     ButtonToolTip {
@@ -560,6 +585,8 @@ Rectangle {
                 }
 
                 Button {
+                    down: false
+                    flat: true
                     id: zoomInButton
 
                     width: buttonSize * 3.5 / 4
@@ -576,6 +603,8 @@ Rectangle {
                 }
 
                 Button {
+                    down: false
+                    flat: true
                     id: orginalScreenSizeButton
 
                     width: buttonSize * 3 / 4
@@ -594,6 +623,8 @@ Rectangle {
                 }
 
                 Button {
+                    down: false
+                    flat: true
                     id: zoomOutButton
 
                     width: buttonSize * 3 / 4.5

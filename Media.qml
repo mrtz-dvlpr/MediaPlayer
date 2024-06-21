@@ -58,9 +58,9 @@ Rectangle {
 
     property VideoOutput videoOutput: videoOutput
 
-    property real testX: 1
+    property real mouseXPosition: 1
 
-    property real testY: 1
+    property real mouseYPosition: 1
 
     property int setMediaPlayerLoops
 
@@ -126,8 +126,8 @@ Rectangle {
                 origin.x: mouseArea.mouseX
                 origin.y: mouseArea.mouseY
 
-                xScale: testX
-                yScale: testY
+                xScale: mouseXPosition
+                yScale: mouseYPosition
             }
         ]
 

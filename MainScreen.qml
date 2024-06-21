@@ -92,8 +92,8 @@ Rectangle {
     Action {
         shortcut: "Esc"
         onTriggered: {
-            mediaPlayer.testX = 1
-            mediaPlayer.testY = 1
+            mediaPlayer.mouseXPosition = 1
+            mediaPlayer.mouseYPosition = 1
         }
     }
 
@@ -348,27 +348,27 @@ Rectangle {
         }
 
         onZoomOutButtonClicked: {
-            if (mediaPlayer.getHasVideo && mediaPlayer.testX > 1
-                    && mediaPlayer.testY > 1) {
-                mediaPlayer.testX -= 1
-                mediaPlayer.testY -= 1
+            if (mediaPlayer.getHasVideo && mediaPlayer.mouseXPosition > 1
+                    && mediaPlayer.mouseYPosition > 1) {
+                mediaPlayer.mouseXPosition -= 1
+                mediaPlayer.mouseYPosition -= 1
             } else {
-                mediaPlayer.testX = 1
-                mediaPlayer.testY = 1
+                mediaPlayer.mouseXPosition = 1
+                mediaPlayer.mouseYPosition = 1
             }
         }
         onZoomInButtonClicked: {
             if (mediaPlayer.getHasVideo) {
-                mediaPlayer.testX += 1
-                mediaPlayer.testY += 1
+                mediaPlayer.mouseXPosition += 1
+                mediaPlayer.mouseYPosition += 1
             }
         }
 
         onOrginalScreenSizeButtonClicked: {
             if (mediaPlayer.getHasVideo) {
 
-                mediaPlayer.testX = 1
-                mediaPlayer.testY = 1
+                mediaPlayer.mouseXPosition = 1
+                mediaPlayer.mouseYPosition = 1
             }
         }
 
