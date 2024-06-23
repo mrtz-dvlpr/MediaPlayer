@@ -16,6 +16,7 @@ if in the clone file be .user file delete that
 
 ---
 ### dependency :
+ ####  in linux :
   ffmpeg : 
   install ffmpeg in linux with 
 
@@ -32,3 +33,4 @@ sudo apt install ffmpeg
   ffmpeg -version
 
 ```
+
