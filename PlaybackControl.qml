@@ -18,17 +18,13 @@ Rectangle {
 
     property bool setMediaSliderEnable
 
-    property real getAudioSliderValue: soundSlider.value / soundSlider.to
+    property real getSoundSliderValue: soundSlider.value / soundSlider.to
 
     property real getMediaSliderValue: mediaSlider.value
 
-    property bool setLowerSoundAudioButtomEnable
+    property bool setSoundSliderEnable
 
-    property bool setAudioSliderEnable
-
-    property bool setHigherSoundAudioButtomEnable
-
-    property string audioMuteButtonSource: "qrc:/icons/Pulsar/icons8-voice-96.png"
+    property string soundMuteButtonSource: "qrc:/icons/Pulsar/icons8-voice-96.png"
 
     property string screenshotPath
 
@@ -40,7 +36,7 @@ Rectangle {
 
     property string x2ButtonImageSource
 
-    property real setAudioSliderValue: 50
+    property real setSoundSliderValue: 50
 
     property real setRateControlSliderValue
 
@@ -56,7 +52,7 @@ Rectangle {
 
     signal muteButtonClicked
 
-    signal audioSliderValueChanged
+    signal soundSliderValueChanged
 
     signal screenshotButtonClicked
 
@@ -174,7 +170,7 @@ Rectangle {
 
             Row {
 
-                id: audioControlRow
+                id: soundControlRow
 
                 x: parent.width / 30
 
@@ -215,7 +211,7 @@ Rectangle {
                     }
 
                     background: Image {
-                        source: audioMuteButtonSource
+                        source: soundMuteButtonSource
                     }
                     onClicked: {
                         muteButtonClicked()
@@ -231,11 +227,11 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
 
                     from: 0
-                    value: setAudioSliderValue
+                    value: setSoundSliderValue
                     to: 100
 
                     onValueChanged: {
-                        audioSliderValueChanged()
+                        soundSliderValueChanged()
                     }
                 }
             }

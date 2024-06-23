@@ -49,7 +49,7 @@ Rectangle {
     function pushPage(screen, path) {
 
         mediaPlayer.mediaPlayerSourceUrl = path
-        mediaPlayer.audioVolume = playbackControl.getAudioSliderValue
+        mediaPlayer.audioVolume = playbackControl.getSoundSliderValue
 
         playbackControl.setMediaSliderEnable = true
 
@@ -100,9 +100,9 @@ Rectangle {
     Action {
         shortcut: "Up"
         onTriggered: {
-            if (playbackControl.getAudioSliderValue < 0.96) {
+            if (playbackControl.getSoundSliderValue < 0.96) {
 
-                playbackControl.setAudioSliderValue += 5
+                playbackControl.setSoundSliderValue += 5
             }
         }
     }
@@ -110,8 +110,8 @@ Rectangle {
     Action {
         shortcut: "Down"
         onTriggered: {
-            if (playbackControl.getAudioSliderValue > 0.04) {
-                playbackControl.setAudioSliderValue -= 5
+            if (playbackControl.getSoundSliderValue > 0.04) {
+                playbackControl.setSoundSliderValue -= 5
             }
         }
     }
@@ -251,7 +251,7 @@ Rectangle {
 
         setMediaSliderValue: mediaPlayer.getPosition
 
-        audioMuteButtonSource: mediaPlayer.setMuted ? "qrc:/icons/Pulsar/icons8-mute-96.png" : "qrc:/icons/Pulsar/icons8-voice-96.png"
+        soundMuteButtonSource: mediaPlayer.setMuted ? "qrc:/icons/Pulsar/icons8-mute-96.png" : "qrc:/icons/Pulsar/icons8-voice-96.png"
 
         setRateControlSliderValue: mediaPlayer.mediaPlayerPlaybackRate
 
@@ -266,8 +266,8 @@ Rectangle {
             mediaPlayer.setPosition = getMediaSliderValue
         }
 
-        onAudioSliderValueChanged: {
-            mediaPlayer.audioVolume = getAudioSliderValue
+        onSoundSliderValueChanged: {
+            mediaPlayer.audioVolume = getSoundSliderValue
         }
 
         onMuteButtonClicked: {
