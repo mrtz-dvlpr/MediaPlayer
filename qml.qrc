@@ -73,9 +73,10 @@
         <file>icons/Pulsar/icons8-repeat-96 (2).png</file>
         <file>icons/Pulsar/icons8-audio-file-96.png</file>
         <file>ButtonToolTip.qml</file>
-        <file>icons/icons8-circled-play-96 (4).png</file>
-        <file>icons/icons8-circled-play-96 (3).png</file>
-        <file>icons/icons8-circled-play-96 (2).png</file>
-        <file>icons/icons8-circled-play-96 (1).png</file>
+        <file>icons/icons8-circled-play-96-_4_.ico</file>
+        <file>icons/icons8-circled-play-96-_3_.ico</file>
+        <file>icons/icons8-circled-play-96-_2_.ico</file>
+        <file>icons/icons8-circled-play-96-_1_.ico</file>
+        <file>app.ico</file>
     </qresource>
 </RCC>
