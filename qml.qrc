@@ -1,0 +1,87 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainScreen.qml</file>
+        <file>Media.qml</file>
+        <file>PlaybackControl.qml</file>
+        <file>PathScreen.qml</file>
+        <file>MediaSlider.qml</file>
+        <file>icons/Pulsar/icons8-audio-96 (1).png</file>
+        <file>icons/Pulsar/icons8-circled-play-96.png</file>
+        <file>icons/Pulsar/icons8-fast-forward-round-96.png</file>
+        <file>icons/Pulsar/icons8-forward-10-96.png</file>
+        <file>icons/Pulsar/icons8-forward-30-96.png</file>
+        <file>icons/Pulsar/icons8-mute-96.png</file>
+        <file>icons/Pulsar/icons8-no-audio-96.png</file>
+        <file>icons/Pulsar/icons8-pause-button-96.png</file>
+        <file>icons/Pulsar/icons8-replay-10-96.png</file>
+        <file>icons/Pulsar/icons8-replay-30-96.png</file>
+        <file>icons/Pulsar/icons8-rewind-button-round-96.png</file>
+        <file>icons/Pulsar/icons8-skip-ahead-15-seconds-96.png</file>
+        <file>icons/Pulsar/icons8-sound-speaker-96.png</file>
+        <file>icons/Pulsar/icons8-stop-circled-96.png</file>
+        <file>icons/Pulsar/icons8-voice-96 (1).png</file>
+        <file>icons/Pulsar/icons8-voice-96.png</file>
+        <file>SoundSlider.qml</file>
+        <file>icons/Pulsar/icons8-audio-96.png</file>
+        <file>icons/Pulsar/icons8-open-view-in-new-tab-96 (1).png</file>
+        <file>icons/Pulsar/icons8-open-view-in-new-tab-96.png</file>
+        <file>icons/Pulsar/icons8-video-stabilization-96.png</file>
+        <file>icons/Pulsar/icons8-video-file-96.png</file>
+        <file>RateControlSlider.qml</file>
+        <file>icons/Pulsar/icons8-insert-button-96.png</file>
+        <file>icons/Pulsar/icons8-insert-button-96 (1).png</file>
+        <file>icons/Pulsar/icons8-rotate-right-96.png</file>
+        <file>icons/Pulsar/icons8-rotate-left-96.png</file>
+        <file>icons/Pulsar/icons8-rotate-right-96 (2).png</file>
+        <file>icons/Pulsar/icons8-rotate-right-96 (1).png</file>
+        <file>icons/Pulsar/icons8-rotate-left-96 (2).png</file>
+        <file>icons/Pulsar/icons8-rotate-left-96 (1).png</file>
+        <file>icons/Pulsar/icons8-zoom-out-96(1).png</file>
+        <file>icons/Pulsar/icons8-zoom-out-96.png</file>
+        <file>icons/Pulsar/icons8-zoom-in-96(1).png</file>
+        <file>icons/Pulsar/icons8-zoom-in-96.png</file>
+        <file>icons/Pulsar/icons8-x2-96(1).png</file>
+        <file>icons/Pulsar/icons8-x2-96.png</file>
+        <file>icons/Pulsar/icons8-settings-96(1).png</file>
+        <file>icons/Pulsar/icons8-settings-96.png</file>
+        <file>icons/Pulsar/icons8-screenshot-96(1).png</file>
+        <file>icons/Pulsar/icons8-screenshot-96.png</file>
+        <file>icons/Pulsar/icons8-rewind-button-round-96 (3).png</file>
+        <file>icons/Pulsar/icons8-rewind-button-round-96 (2).png</file>
+        <file>icons/Pulsar/icons8-rewind-button-round-96 (1).png</file>
+        <file>icons/Pulsar/icons8-resize-96(1).png</file>
+        <file>icons/Pulsar/icons8-resize-96.png</file>
+        <file>icons/Pulsar/icons8-private-96.png</file>
+        <file>icons/Pulsar/icons8-original-size-96(1).png</file>
+        <file>icons/Pulsar/icons8-original-size-96.png</file>
+        <file>icons/Pulsar/icons8-open-document-96(1).png</file>
+        <file>icons/Pulsar/icons8-open-document-96.png</file>
+        <file>icons/Pulsar/icons8-insert-page-96(1).png</file>
+        <file>icons/Pulsar/icons8-insert-page-96.png</file>
+        <file>icons/Pulsar/icons8-info-96(1).png</file>
+        <file>icons/Pulsar/icons8-info-96.png</file>
+        <file>icons/Pulsar/icons8-folder-96(1).png</file>
+        <file>icons/Pulsar/icons8-folder-96.png</file>
+        <file>icons/Pulsar/icons8-add-96.png</file>
+        <file>icons/Pulsar/icons8-insert-button-96 (2).png</file>
+        <file>icons/Pulsar/icons8-pause-button-96 (1).png</file>
+        <file>icons/Pulsar/icons8-stop-circled-96 (1).png</file>
+        <file>icons/Pulsar/icons8-repeat-96 (1).png</file>
+        <file>icons/Pulsar/icons8-repeat-96.png</file>
+        <file>icons/Pulsar/icons8-repeat-96 (3).png</file>
+        <file>icons/Pulsar/icons8-repeat-96 (2).png</file>
+        <file>icons/Pulsar/icons8-audio-file-96.png</file>
+        <file>ButtonToolTip.qml</file>
+        <file>icons/icons8-circled-play-96-_4_.ico</file>
+        <file>icons/icons8-circled-play-96-_3_.ico</file>
+        <file>icons/icons8-circled-play-96-_2_.ico</file>
+        <file>icons/icons8-circled-play-96-_1_.ico</file>
+        <file>app.ico</file>
+        <file>app.rc</file>
+        <file>icons/Pulsar/icons8-back-96 (1).png</file>
+        <file>icons/Pulsar/icons8-back-96.png</file>
+        <file>icons/Pulsar/icons8-back-96 (2).png</file>
+        <file>icons/Pulsar/icons8-back-96 (3).png</file>
+    </qresource>
+</RCC>
