@@ -260,7 +260,7 @@ Rectangle {
                         source: rewindButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96.png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (3).png"
                     }
 
-                    onClicked: onSkipBackButtonClicked()
+                    onClicked: skipBackButtonClicked()
                 }
 
                 Button {
@@ -347,7 +347,7 @@ Rectangle {
                     background: Image {
                         source: fastForwardButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (2).png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (1).png"
                     }
-                    onClicked: forwardButtonClicked()
+                    onClicked: skipForwardButtonClicked()
                 }
             }
 

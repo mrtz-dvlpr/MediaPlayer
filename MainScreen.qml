@@ -48,26 +48,25 @@ Rectangle {
 
     function pushPage(screen, path) {
 
-        mediaPlayer.mediaPlayerSourceUrl = path
+        mediaPlayer.setMediaPlayerSourceUrl = path
         mediaPlayer.audioVolume = playbackControl.getSoundSliderValue
 
         playbackControl.setMediaSliderEnable = true
 
-        fileName = getFileName(mediaPlayer.mediaPlayerSourceUrl)
+        fileName = getFileName(mediaPlayer.setMediaPlayerSourceUrl)
 
         if (playbackControl.screenshotPath == "") {
             playbackControl.screenshotPath = getFilePath(
-                        mediaPlayer.mediaPlayerSourceUrl)
+                        mediaPlayer.setMediaPlayerSourceUrl)
         }
 
         view.push(screen)
+        // mediaPlayer.play()
     }
 
     function popPage() {
 
-        mediaPlayer.stop()
-        mediaPlayer.mediaPlayerSourceUrl = ""
-
+        mediaPlayer.setMediaPlayerSourceUrl = ""
         fileName = ""
 
         playbackControl.setMediaSliderEnable = false
@@ -327,7 +326,7 @@ Rectangle {
 
             screenshotPath = textPathInputTextFieldDialog
                     !== "" ? textPathInputTextFieldDialog : getFilePath(
-                                 mediaPlayer.mediaPlayerSourceUrl)
+                                 mediaPlayer.setMediaPlayerSourceUrl)
         }
 
         onRotateLeftButtonClicked: {

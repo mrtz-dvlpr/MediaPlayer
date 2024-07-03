@@ -30,7 +30,7 @@ Rectangle {
         }
     }
 
-    property string mediaPlayerSourceUrl
+    property string setMediaPlayerSourceUrl
 
     property real audioVolume
 
@@ -88,12 +88,11 @@ Rectangle {
 
         id: mediaPlayer
 
-        source: mediaPlayerSourceUrl
+        source: setMediaPlayerSourceUrl
 
         position: root.setPosition
 
         autoPlay: true
-
         audioOutput: audioOutput
 
         videoOutput: videoOutput
