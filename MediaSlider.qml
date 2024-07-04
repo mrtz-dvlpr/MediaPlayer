@@ -53,8 +53,9 @@ Slider {
 
             parent: control.handle
 
-            text: control.value.toFixed((control.stepSize + '.').split(
-                                            '.')[1].length)
+            // text: control.value.toFixed((control.stepSize + '.').split(
+            //                                 '.')[1].length)
+            text: millisToMinutesAndSeconds(control.value)
             font.pixelSize: parent.width / 2
 
             delay: 100

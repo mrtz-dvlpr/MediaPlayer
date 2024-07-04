@@ -251,8 +251,6 @@ Rectangle {
                     width: buttonSize * 8 / 10
                     height: width
 
-                    enabled: controlButtonEnable
-
                     ButtonToolTip {
                         button: parent
                         text: "rewind 30 s ( Left )"
@@ -275,8 +273,6 @@ Rectangle {
                     width: buttonSize
                     height: width
 
-                    enabled: controlButtonEnable
-
                     ButtonToolTip {
                         button: parent
                         text: "back to path screen ( BackSpace )"
@@ -296,8 +292,6 @@ Rectangle {
 
                     down: false
                     flat: true
-
-                    enabled: controlButtonEnable
 
                     ButtonToolTip {
                         button: parent
@@ -326,7 +320,7 @@ Rectangle {
                         button: parent
                         text: "stop"
                     }
-                    enabled: controlButtonEnable
+
                     background: Image {
 
                         source: stop.pressed ? "qrc:/icons/Pulsar/icons8-stop-circled-96 (1).png" : "qrc:/icons/Pulsar/icons8-stop-circled-96.png"
@@ -350,7 +344,7 @@ Rectangle {
                         button: parent
                         text: "fast forward 30 s ( Right )"
                     }
-                    enabled: controlButtonEnable
+
                     anchors.bottom: parent.bottom
                     background: Image {
                         source: fastForwardButton.pressed ? "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (2).png" : "qrc:/icons/Pulsar/icons8-rewind-button-round-96 (1).png"

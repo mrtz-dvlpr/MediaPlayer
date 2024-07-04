@@ -32,8 +32,6 @@ Rectangle {
 
     property string filePath
 
-    property bool enableWork
-
     function getFileName(fileUrl) {
         return fileUrl.split('/').pop().split('.')[0]
     }
@@ -53,7 +51,6 @@ Rectangle {
 
         mediaPlayer.setMediaPlayerSourceUrl = path
         playbackControl.controlButtonEnable = true
-        enableWork = true
 
         mediaPlayer.audioVolume = playbackControl.getSoundSliderValue
 
@@ -67,14 +64,13 @@ Rectangle {
         }
 
         view.push(screen)
-        mediaPlayer.play()
     }
+
     function popPage() {
 
-        enableWork = false
         mediaPlayer.stop()
-        playbackControl.controlButtonEnable = false
-        // mediaPlayer.setMediaPlayerSourceUrl = ""
+        mediaPlayer.setMediaPlayerSourceUrl = ""
+
         fileName = ""
 
         playbackControl.setMediaSliderEnable = false
@@ -154,7 +150,7 @@ Rectangle {
     Action {
         shortcut: "Ctrl+O"
         onTriggered: {
-            if (!enableWork)
+            if (!mediaPlayer.getHasVideo)
                 fileDialog.open()
         }
     }
@@ -188,9 +184,7 @@ Rectangle {
     }
 
     Media {
-
         color: mainColor
-
         id: mediaPlayer
     }
 
@@ -240,7 +234,7 @@ Rectangle {
         color: mainRoot.mainColor
 
         onPlayAndPauseButtonClicked: {
-            (enableWork || mediaPlayer.getHasAudio)
+            (mediaPlayer.getHasVideo || mediaPlayer.getHasAudio)
                     && mediaPlayer.getPlaying ? mediaPlayer.pause(
                                                     ) : mediaPlayer.play()
         }
@@ -249,7 +243,8 @@ Rectangle {
 
         onStopButtonClicked: mediaPlayer.stop()
 
-        playtAndPauseButtonIconPath: (enableWork || mediaPlayer.getHasAudio)
+        playtAndPauseButtonIconPath: (mediaPlayer.getHasVideo
+                                      || mediaPlayer.getHasAudio)
                                      && mediaPlayer.getPlaying ? "qrc:/icons/Pulsar/icons8-pause-button-96 (1).png" : "qrc:/icons/Pulsar/icons8-circled-play-96.png"
 
         repeatButtonSource: mediaPlayer.getMediaPlayerLoops
@@ -282,7 +277,7 @@ Rectangle {
 
         onScreenshotButtonClicked: {
 
-            if (enableWork) {
+            if (mediaPlayer.getHasVideo) {
 
                 var screenshotName = ""
                 var messageColor
@@ -291,10 +286,10 @@ Rectangle {
                 mediaPlayer.videoOutput.grabToImage(function (result) {
 
                     screenshotName = fileName + "_" + millisToMinutesAndSeconds(
-                                getMediaSliderValue) + ".png"
+                                getMediaSliderValue)
                     var captureNameAndDirectory = "file://" + screenshotPath + "/" + screenshotName
 
-                    if (result.saveToFile(captureNameAndDirectory)) {
+                    if (result.saveToFile(captureNameAndDirectory + ".png")) {
                         messageDialog = "the \"" + screenshotName + "\" file saved in \" "
                                 + screenshotPath + " \" directory"
                         messageColor = "#ABEBC6"
@@ -349,7 +344,7 @@ Rectangle {
         }
 
         onZoomOutButtonClicked: {
-            if (enableWork && mediaPlayer.verticalScale > 1
+            if (mediaPlayer.getHasVideo && mediaPlayer.verticalScale > 1
                     && mediaPlayer.horizontalScale > 1) {
                 mediaPlayer.verticalScale -= 1
                 mediaPlayer.horizontalScale -= 1
@@ -359,14 +354,14 @@ Rectangle {
             }
         }
         onZoomInButtonClicked: {
-            if (enableWork) {
+            if (mediaPlayer.getHasVideo) {
                 mediaPlayer.verticalScale += 1
                 mediaPlayer.horizontalScale += 1
             }
         }
 
         onOrginalScaleButtonClicked: {
-            if (enableWork) {
+            if (mediaPlayer.getHasVideo) {
 
                 mediaPlayer.verticalScale = 1
                 mediaPlayer.horizontalScale = 1

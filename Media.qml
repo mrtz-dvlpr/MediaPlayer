@@ -68,7 +68,6 @@ Rectangle {
 
     property real currentScale: 1.0
 
-
     signal mediaPlayerPositionChanged
 
     function play() {
@@ -93,8 +92,21 @@ Rectangle {
 
         position: root.setPosition
 
-        autoPlay: false
+        autoPlay: true
 
+        // property int limit: 100
+        // onPositionChanged: {
+
+        //     if (position < limit) {
+        //         stop()
+        //         play()
+        //         limit = -1
+        //         console.log(position)
+        //     }
+        // }
+        // onSourceChanged: {
+        //     limit = 100
+        // }
         audioOutput: audioOutput
 
         videoOutput: videoOutput
