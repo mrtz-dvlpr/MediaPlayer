@@ -68,7 +68,6 @@ Rectangle {
 
     property real currentScale: 1.0
 
-    property bool setHasVideo
 
     signal mediaPlayerPositionChanged
 

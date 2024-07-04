@@ -32,6 +32,8 @@ Rectangle {
 
     property string filePath
 
+    property bool enableWork
+
     function getFileName(fileUrl) {
         return fileUrl.split('/').pop().split('.')[0]
     }
@@ -51,6 +53,7 @@ Rectangle {
 
         mediaPlayer.setMediaPlayerSourceUrl = path
         playbackControl.controlButtonEnable = true
+        enableWork = true
 
         mediaPlayer.audioVolume = playbackControl.getSoundSliderValue
 
@@ -68,9 +71,9 @@ Rectangle {
     }
     function popPage() {
 
+        enableWork = false
         mediaPlayer.stop()
         playbackControl.controlButtonEnable = false
-
         // mediaPlayer.setMediaPlayerSourceUrl = ""
         fileName = ""
 
@@ -151,7 +154,7 @@ Rectangle {
     Action {
         shortcut: "Ctrl+O"
         onTriggered: {
-            if (!mediaPlayer.getHasVideo)
+            if (!enableWork)
                 fileDialog.open()
         }
     }
@@ -237,7 +240,7 @@ Rectangle {
         color: mainRoot.mainColor
 
         onPlayAndPauseButtonClicked: {
-            (mediaPlayer.getHasVideo || mediaPlayer.getHasAudio)
+            (enableWork || mediaPlayer.getHasAudio)
                     && mediaPlayer.getPlaying ? mediaPlayer.pause(
                                                     ) : mediaPlayer.play()
         }
@@ -246,8 +249,7 @@ Rectangle {
 
         onStopButtonClicked: mediaPlayer.stop()
 
-        playtAndPauseButtonIconPath: (mediaPlayer.getHasVideo
-                                      || mediaPlayer.getHasAudio)
+        playtAndPauseButtonIconPath: (enableWork || mediaPlayer.getHasAudio)
                                      && mediaPlayer.getPlaying ? "qrc:/icons/Pulsar/icons8-pause-button-96 (1).png" : "qrc:/icons/Pulsar/icons8-circled-play-96.png"
 
         repeatButtonSource: mediaPlayer.getMediaPlayerLoops
@@ -280,7 +282,7 @@ Rectangle {
 
         onScreenshotButtonClicked: {
 
-            if (mediaPlayer.getHasVideo) {
+            if (enableWork) {
 
                 var screenshotName = ""
                 var messageColor
@@ -347,7 +349,7 @@ Rectangle {
         }
 
         onZoomOutButtonClicked: {
-            if (mediaPlayer.getHasVideo && mediaPlayer.verticalScale > 1
+            if (enableWork && mediaPlayer.verticalScale > 1
                     && mediaPlayer.horizontalScale > 1) {
                 mediaPlayer.verticalScale -= 1
                 mediaPlayer.horizontalScale -= 1
@@ -357,14 +359,14 @@ Rectangle {
             }
         }
         onZoomInButtonClicked: {
-            if (mediaPlayer.getHasVideo) {
+            if (enableWork) {
                 mediaPlayer.verticalScale += 1
                 mediaPlayer.horizontalScale += 1
             }
         }
 
         onOrginalScaleButtonClicked: {
-            if (mediaPlayer.getHasVideo) {
+            if (enableWork) {
 
                 mediaPlayer.verticalScale = 1
                 mediaPlayer.horizontalScale = 1
