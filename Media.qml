@@ -68,6 +68,8 @@ Rectangle {
 
     property real currentScale: 1.0
 
+    property bool setHasVideo
+
     signal mediaPlayerPositionChanged
 
     function play() {
@@ -92,14 +94,11 @@ Rectangle {
 
         position: root.setPosition
 
-        autoPlay: true
+        autoPlay: false
+
         audioOutput: audioOutput
 
         videoOutput: videoOutput
-
-        onPositionChanged: {
-            mediaPlayerPositionChanged()
-        }
 
         playbackRate: mediaPlayerPlaybackRate
 

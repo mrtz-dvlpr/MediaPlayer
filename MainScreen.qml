@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Dialogs
 import QtMultimedia
+import QtQml
 
 Rectangle {
 
@@ -49,6 +50,8 @@ Rectangle {
     function pushPage(screen, path) {
 
         mediaPlayer.setMediaPlayerSourceUrl = path
+        playbackControl.controlButtonEnable = true
+
         mediaPlayer.audioVolume = playbackControl.getSoundSliderValue
 
         playbackControl.setMediaSliderEnable = true
@@ -61,12 +64,14 @@ Rectangle {
         }
 
         view.push(screen)
-        // mediaPlayer.play()
+        mediaPlayer.play()
     }
-
     function popPage() {
 
-        mediaPlayer.setMediaPlayerSourceUrl = ""
+        mediaPlayer.stop()
+        playbackControl.controlButtonEnable = false
+
+        // mediaPlayer.setMediaPlayerSourceUrl = ""
         fileName = ""
 
         playbackControl.setMediaSliderEnable = false
