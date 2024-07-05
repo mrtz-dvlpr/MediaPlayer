@@ -119,6 +119,7 @@ Rectangle {
     AudioOutput {
         id: audioOutput
         volume: audioVolume
+        // volume: 0
         muted: root.setMuted
     }
 

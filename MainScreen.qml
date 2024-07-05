@@ -267,8 +267,9 @@ Rectangle {
             mediaPlayer.setPosition = getMediaSliderValue
         }
 
-        onSoundSliderValueChanged: {
+        onSoundSliderMoved: {
             mediaPlayer.audioVolume = getSoundSliderValue
+            console.log(getSoundSliderValue)
         }
 
         onMuteButtonClicked: {

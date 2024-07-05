@@ -54,7 +54,7 @@ Rectangle {
 
     signal muteButtonClicked
 
-    signal soundSliderValueChanged
+    signal soundSliderMoved
 
     signal screenshotButtonClicked
 
@@ -232,8 +232,8 @@ Rectangle {
                     value: setSoundSliderValue
                     to: 100
 
-                    onValueChanged: {
-                        soundSliderValueChanged()
+                    onMoved: {
+                        soundSliderMoved()
                     }
                 }
             }
