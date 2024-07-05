@@ -34,3 +34,17 @@ sudo apt install ffmpeg
 
 ```
 
+#### in windows:
+in win+S > search system environment >in advanced tab >click Environment Variable then  in User variables for (user) click New... button:
+set for:
+```
+QSG_RHI_PREFER_SOFTWARE_RENDERER : 1
+```
+and 
+```
+QSG_RHI_BACKEND : opengl
+```
+then restart windows .
+
+
+
