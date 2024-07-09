@@ -48,7 +48,7 @@ Rectangle {
 
     signal stopButtonClicked
 
-    signal videoSliderMoved
+    signal mediaSliderMoved
 
     signal backToPathScreenButtonClicked
 
@@ -100,7 +100,7 @@ Rectangle {
             Row {
 
                 x: 10
-                id: videoSliderRow
+                id: mediaSliderRow
 
                 spacing: 10
 
@@ -118,7 +118,7 @@ Rectangle {
                 MediaSlider {
 
                     id: mediaSlider
-                    width: videoSliderRow.width - positionTimeText.width
+                    width: mediaSliderRow.width - positionTimeText.width
                            - toggleFullScreen.width - x2Button.width - 50
 
                     from: 0.0
@@ -126,7 +126,7 @@ Rectangle {
                     to: setMediaSliderTo
 
                     onMoved: {
-                        videoSliderMoved()
+                        mediaSliderMoved()
                     }
 
                     enabled: setMediaSliderEnable
@@ -466,7 +466,7 @@ Rectangle {
 
                                     from: 0.25
                                     value: setRateControlSliderValue
-                                    to: 2
+                                    to: 4
 
                                     stepSize: 0.25
                                 }

@@ -13,7 +13,7 @@ Rectangle {
         anchors.centerIn: parent
 
         Image {
-            source: mediaPlayer.metaData.coverArtUrlLarg ? mediaPlayer.metaData.coverArtUrlLarg : "qrc:/icons/Pulsar/icons8-audio-file-96.png"
+            source: mediaPlayer.metaData.coverArtUrlLarg ? mediaPlayer.metaData.coverArtUrlLarg : "qrc:/icons/Pulsar/icons8-music-96.png"
             width: root.width / 10
             height: width
             anchors.horizontalCenter: parent.horizontalCenter

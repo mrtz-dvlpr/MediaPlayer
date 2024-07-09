@@ -83,5 +83,6 @@
         <file>icons/Pulsar/icons8-back-96.png</file>
         <file>icons/Pulsar/icons8-back-96 (2).png</file>
         <file>icons/Pulsar/icons8-back-96 (3).png</file>
+        <file>icons/Pulsar/icons8-music-96.png</file>
     </qresource>
 </RCC>

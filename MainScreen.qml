@@ -263,7 +263,7 @@ Rectangle {
             popPage()
         }
 
-        onVideoSliderMoved: {
+        onMediaSliderMoved: {
             mediaPlayer.setPosition = getMediaSliderValue
         }
 
